@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiny Tangent — Property Photography · West Yorkshire</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0f0f0d;
+  --surface: #161614;
+  --card: #1c1c19;
+  --dark: #0a0a08;
+  --mid: #242420;
+  --gold: #c9a55a;
+  --gold-light: #debb7a;
+  --gold-pale: rgba(201,165,90,0.12);
+  --muted: #6a6a60;
+  --border: #2a2a24;
+  --white: #e8e4d8;
+  --text: #c8c4b8;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 3rem;
+  background: rgba(15,15,13,0.97);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+.logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 400; color: var(--white); text-decoration: none; letter-spacing: 0.02em; }
+.logo em { font-style: italic; color: var(--gold); }
+nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
+nav a { text-decoration: none; color: var(--muted); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s; font-weight: 400; }
+nav a:hover { color: var(--gold); }
+.nav-cta { padding: 0.55rem 1.4rem; background: var(--gold); color: var(--dark) !important; font-size: 0.72rem !important; letter-spacing: 0.15em !important; transition: background 0.3s !important; }
+.nav-cta:hover { background: var(--gold-light) !important; color: var(--dark) !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  padding-top: 64px;
+}
+.hero-left {
+  background: var(--dark);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 6rem 4rem;
+  position: relative; overflow: hidden;
+}
+.hero-left::before {
+  content: ''; position: absolute; top: -100px; left: -100px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,165,90,0.12) 0%, transparent 70%);
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 2rem;
+}
+.hero-tag::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 4.5vw, 5rem);
+  font-weight: 400; line-height: 1.1;
+  color: var(--white); margin-bottom: 1.8rem;
+}
+.hero h1 em { font-style: italic; color: var(--gold-light); display: block; }
+.hero-desc { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 2.5rem; max-width: 380px; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary { padding: 0.9rem 2rem; background: var(--gold); color: var(--dark); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 400; transition: background 0.3s; cursor: pointer; border: none; font-family: 'Outfit', sans-serif; }
+.btn-primary:hover { background: var(--gold-light); }
+.btn-secondary { padding: 0.9rem 2rem; border: 1px solid var(--border); color: var(--muted); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 400; transition: all 0.3s; }
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+.hero-stats {
+  display: flex; gap: 2.5rem; margin-top: 3.5rem;
+  padding-top: 2.5rem; border-top: 1px solid var(--border);
+}
+.hero-stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold-light); line-height: 1; }
+.hero-stat-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
+
+.hero-right {
+  position: relative; overflow: hidden;
+  background: var(--card);
+}
+.hero-img-grid {
+  display: grid; grid-template-rows: 1fr 1fr; height: 100%;
+}
+.hero-img-cell {
+  position: relative; overflow: hidden;
+  background: var(--card);
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-img-cell img { width: 100%; height: 100%; object-fit: cover; }
+.hero-img-placeholder {
+  display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+}
+.hero-img-placeholder svg { color: var(--muted); opacity: 0.3; }
+.hero-img-placeholder span { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); opacity: 0.5; }
+.hero-badge {
+  position: absolute; bottom: 1.5rem; right: 1.5rem;
+  background: var(--card); border: 1px solid var(--border); padding: 0.8rem 1.2rem;
+  display: flex; align-items: center; gap: 0.6rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.hero-badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #4caf50; }
+.hero-badge span { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); font-weight: 400; }
+
+/* ── WHY SECTION ── */
+.why-section { background: var(--surface); padding: 6rem 3rem; }
+.why-inner { max-width: 1100px; margin: 0 auto; }
+.why-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: start; }
+.why-left h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3vw, 3rem); font-weight: 400; line-height: 1.2; color: var(--white); }
+.why-left h2 em { font-style: italic; color: var(--gold); display: block; }
+.why-left p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; margin-top: 1.2rem; }
+.why-points { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.why-point { padding: 1.8rem; background: var(--card); border: 1px solid var(--border); }
+.why-point-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--gold-pale); line-height: 1; margin-bottom: 0.8rem; font-weight: 400; }
+.why-point h4 { font-size: 0.88rem; font-weight: 500; color: var(--white); margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+.why-point p { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+
+/* ── PORTFOLIO ── */
+.portfolio-section { padding: 6rem 0; background: var(--bg); }
+.portfolio-inner { max-width: 1200px; margin: 0 auto; padding: 0 3rem; }
+.section-eyebrow { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; }
+.section-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--border); max-width: 60px; }
+.section-heading { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 400; color: var(--white); margin-bottom: 3rem; }
+.section-heading em { font-style: italic; color: var(--gold); }
+
+.portfolio-masonry { columns: 3; gap: 10px; }
+.masonry-item { break-inside: avoid; margin-bottom: 10px; position: relative; overflow: hidden; cursor: pointer; background: var(--card); }
+.masonry-item img { width: 100%; display: block; transition: transform 0.6s ease; }
+.masonry-item:hover img { transform: scale(1.04); }
+.masonry-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 50%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 1.2rem; }
+.masonry-item:hover .masonry-overlay { opacity: 1; }
+.masonry-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); }
+.masonry-placeholder { aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; background: var(--card); }
+.masonry-placeholder svg { color: var(--muted); opacity: 0.25; }
+.masonry-placeholder span { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); opacity: 0.5; }
+
+.portfolio-cta { margin-top: 3rem; padding: 2.5rem; background: var(--card); border: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.portfolio-cta-text h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; color: var(--white); margin-bottom: 0.4rem; }
+.portfolio-cta-text p { font-size: 0.85rem; color: var(--muted); }
+
+/* ── PACKAGES ── */
+.packages-section { background: var(--surface); padding: 6rem 3rem; }
+.packages-inner { max-width: 1100px; margin: 0 auto; }
+.packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.package-card { border: 1px solid var(--border); padding: 2.5rem 2rem; position: relative; transition: border-color 0.3s, transform 0.3s; background: var(--card); }
+.package-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+.package-card.featured { border-color: var(--gold); background: var(--mid); }
+.featured-badge { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--gold); padding: 0.3rem 1rem; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dark); white-space: nowrap; }
+.package-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; color: var(--white); margin-bottom: 0.3rem; }
+.package-price { font-size: 0.8rem; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 1.5rem; font-weight: 400; }
+.package-features { list-style: none; margin-bottom: 2rem; }
+.package-features li { font-size: 0.83rem; color: var(--muted); padding: 0.5rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 0.6rem; line-height: 1.4; }
+.package-features li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.package-note { font-size: 0.72rem; color: var(--muted); font-style: italic; margin-top: auto; }
+.btn-package { width: 100%; padding: 0.85rem; background: none; border: 1px solid var(--border); color: var(--text); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; font-family: 'Outfit', sans-serif; font-weight: 400; transition: all 0.3s; }
+.btn-package:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+.package-card.featured .btn-package { border-color: var(--gold); background: var(--gold); color: var(--dark); }
+.package-card.featured .btn-package:hover { background: var(--gold-light); border-color: var(--gold-light); }
+.packages-note { margin-top: 1.5rem; text-align: center; font-size: 0.78rem; color: var(--muted); }
+
+/* ── PROCESS ── */
+.process-section { padding: 6rem 3rem; background: var(--bg); }
+.process-inner { max-width: 1100px; margin: 0 auto; }
+.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 3rem; position: relative; }
+.process-steps::before { content: ''; position: absolute; top: 28px; left: 12.5%; right: 12.5%; height: 1px; background: var(--border); z-index: 0; }
+.process-step { text-align: center; padding: 0 1.5rem; position: relative; z-index: 1; }
+.step-num { width: 56px; height: 56px; border-radius: 50%; background: var(--card); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); font-weight: 400; transition: background 0.3s, border-color 0.3s; }
+.process-step:hover .step-num { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+.step-title { font-size: 0.85rem; font-weight: 500; color: var(--white); margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+.step-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+
+/* ── COVERAGE ── */
+.coverage-section { background: var(--card); padding: 5rem 3rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.coverage-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.coverage-text .section-eyebrow { color: var(--gold); }
+.coverage-text .section-eyebrow::after { background: var(--border); }
+.coverage-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 2.5vw, 2.5rem); font-weight: 400; color: var(--white); margin-bottom: 1.2rem; }
+.coverage-text h2 em { font-style: italic; color: var(--gold-light); }
+.coverage-text p { font-size: 0.88rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
+.coverage-areas { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.area-tag { padding: 0.4rem 0.9rem; border: 1px solid var(--border); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); transition: all 0.3s; cursor: default; }
+.area-tag:hover { border-color: var(--gold); color: var(--gold); }
+.coverage-turnaround { margin-top: 2rem; padding: 1.5rem; background: var(--gold-pale); border-left: 3px solid var(--gold); }
+.coverage-turnaround p { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+.coverage-turnaround strong { color: var(--gold-light); font-weight: 400; }
+
+/* ── CONTACT ── */
+.contact-section { background: var(--surface); padding: 6rem 3rem; }
+.contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; }
+.contact-left h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 2.5vw, 2.8rem); font-weight: 400; color: var(--white); margin-bottom: 1rem; }
+.contact-left h2 em { font-style: italic; color: var(--gold); }
+.contact-left p { font-size: 0.88rem; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
+.contact-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.contact-detail-icon { width: 40px; height: 40px; background: var(--gold-pale); border: 1px solid rgba(201,165,90,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.contact-detail-icon svg { color: var(--gold); }
+.contact-detail-text p { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+.contact-detail-text a, .contact-detail-text span { font-size: 0.9rem; color: var(--white); text-decoration: none; font-weight: 400; }
+.contact-detail-text a:hover { color: var(--gold); }
+
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-field label { display: block; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+.form-field input, .form-field select, .form-field textarea {
+  width: 100%; background: var(--card); border: 1px solid var(--border);
+  color: var(--white); padding: 0.75rem 1rem;
+  font-family: 'Outfit', sans-serif; font-size: 0.88rem; font-weight: 300;
+  outline: none; transition: border-color 0.3s;
+}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--gold); }
+.form-field textarea { resize: vertical; min-height: 90px; }
+.form-field select option { background: var(--card); color: var(--white); }
+.form-submit-row { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.form-submit { padding: 0.9rem 2.5rem; background: var(--gold); color: var(--dark); border: none; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; font-family: 'Outfit', sans-serif; font-weight: 400; transition: background 0.3s; }
+.form-submit:hover { background: var(--gold-light); }
+.form-note { font-size: 0.75rem; color: var(--muted); font-style: italic; }
+.phone-reveal { display: none; margin-top: 1rem; padding: 1rem 1.2rem; background: var(--gold-pale); border-left: 3px solid var(--gold); }
+.phone-reveal p { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+.phone-reveal a { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gold-light); text-decoration: none; }
+
+/* ── FOOTER ── */
+footer { background: var(--dark); padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid var(--border); }
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); }
+.footer-logo em { font-style: italic; color: var(--gold-light); }
+footer p { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; }
+
+/* ── LIGHTBOX ── */
+.lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; padding: 2rem; }
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; }
+.lb-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; opacity: 0.6; transition: opacity 0.2s; line-height: 1; }
+.lb-close:hover { opacity: 1; }
+.lb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: white; font-size: 2.5rem; cursor: pointer; opacity: 0.4; transition: opacity 0.2s; padding: 1rem; }
+.lb-nav:hover { opacity: 1; }
+.lb-prev { left: 0.5rem; }
+.lb-next { right: 0.5rem; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  nav ul { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 5rem 2rem; min-height: 100vh; }
+  .why-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .why-points { grid-template-columns: 1fr; }
+  .packages-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .process-steps::before { display: none; }
+  .coverage-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { flex-direction: column; text-align: center; }
+  .portfolio-inner, .packages-inner, .process-inner { padding: 0 1.5rem; }
+  .portfolio-masonry { columns: 2; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     ⚙️  MEDIA CONFIG — EDIT THIS SECTION
+     ════════════════════════════════════════
+  HOW TO ADD PHOTOS:
+  1. Upload to Google Drive
+  2. Right-click → Share → Anyone with the link
+  3. Copy the file ID from the URL:
+     drive.google.com/file/d/FILE_ID/view
+  4. Add below as: { id: "FILE_ID", label: "Caption" }
+
+  HERO IMAGES (shown split on homepage):
+  Set heroImages to two Drive file IDs.
+  ════════════════════════════════════════ -->
+<script>
+const HERO_IMAGES = [
+  { id: "1p2iyHeL71Laudr6HW49D9aIEjCftVRaU", label: "Living Room" },
+  { id: "141boktnW3D5mJ4bfDHRXlV0jvoliDk-P", label: "Lounge" },
+];
+
+const PORTFOLIO = [
+  { id: "1p2iyHeL71Laudr6HW49D9aIEjCftVRaU", label: "Living Room · Example Property" },
+  { id: "141boktnW3D5mJ4bfDHRXlV0jvoliDk-P", label: "Lounge · Example Property" },
+  // Add more below — just paste Drive file IDs:
+  // { id: "DRIVE_FILE_ID", label: "Kitchen" },
+  // { id: "DRIVE_FILE_ID", label: "Master Bedroom" },
+  // { id: "DRIVE_FILE_ID", label: "Front Exterior" },
+  // { id: "DRIVE_FILE_ID", label: "Aerial View" },
+];
+
+function driveImg(id) {
+  return `https://lh3.googleusercontent.com/d/${id}`;
+}
+</script>
+
+<nav>
+  <a href="#" class="logo">Tiny <em>Tangent</em></a>
+  <ul>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#coverage">Coverage</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Shoot</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-tag">West Yorkshire · Property Photography</p>
+    <h1>Listings that<br><em>stand out.</em></h1>
+    <p class="hero-desc">Professional interior, exterior, and aerial drone photography for estate agents across West Yorkshire — delivered in 48 hours, ready for Rightmove.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book a Free Shoot</a>
+      <a href="#portfolio" class="btn-secondary">View the Work</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">48h</div>
+        <div class="hero-stat-label">Turnaround</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">Free</div>
+        <div class="hero-stat-label">First Shoot</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">WY</div>
+        <div class="hero-stat-label">Based Locally</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-grid" id="hero-img-grid">
+      <div class="hero-img-cell">
+        <div class="hero-img-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          <span>Loading…</span>
+        </div>
+      </div>
+      <div class="hero-img-cell">
+        <div class="hero-img-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          <span>Loading…</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span>Available for bookings</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY ── -->
+<section class="why-section">
+  <div class="why-inner">
+    <div class="why-grid">
+      <div class="why-left reveal">
+        <h2>Why professional<br><em>photography sells.</em></h2>
+        <p>Buyers decide within seconds of seeing a listing. The quality of the photography is the quality of first impression — and that directly affects viewings, offers, and sale price.</p>
+      </div>
+      <div class="why-points reveal">
+        <div class="why-point">
+          <div class="why-point-num">01</div>
+          <h4>More viewings</h4>
+          <p>Listings with professional photography attract significantly more online clicks and physical viewings than those shot on a phone.</p>
+        </div>
+        <div class="why-point">
+          <div class="why-point-num">02</div>
+          <h4>Faster sales</h4>
+          <p>Well-photographed properties typically spend fewer days on the market — the right photo brings the right buyer, faster.</p>
+        </div>
+        <div class="why-point">
+          <div class="why-point-num">03</div>
+          <h4>Aerial advantage</h4>
+          <p>Drone shots show plot size, location, and surroundings — something ground photography simply can't. Most local agents don't offer this yet.</p>
+        </div>
+        <div class="why-point">
+          <div class="why-point-num">04</div>
+          <h4>48-hour delivery</h4>
+          <p>Edited, web-ready images delivered within 48 hours of the shoot. Ready to upload straight to Rightmove or Zoopla.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PORTFOLIO ── -->
+<section id="portfolio" class="portfolio-section">
+  <div class="portfolio-inner">
+    <p class="section-eyebrow reveal">Selected work</p>
+    <h2 class="section-heading reveal">Example <em>property shoots</em></h2>
+    <div class="portfolio-masonry reveal" id="portfolio-grid"></div>
+    <div class="portfolio-cta reveal">
+      <div class="portfolio-cta-text">
+        <h3>Like what you see?</h3>
+        <p>Book a complimentary first shoot on one of your current listings — no commitment required.</p>
+      </div>
+      <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book Free Shoot</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── PACKAGES ── -->
+<section id="packages" class="packages-section">
+  <div class="packages-inner">
+    <p class="section-eyebrow reveal">Pricing</p>
+    <h2 class="section-heading reveal">Simple, clear <em>packages</em></h2>
+    <div class="packages-grid reveal">
+      <div class="package-card">
+        <p class="package-name">Standard</p>
+        <p class="package-price">Interior & Exterior · from £95</p>
+        <ul class="package-features">
+          <li>Up to 20 edited images</li>
+          <li>Interior rooms — all key spaces</li>
+          <li>Front & rear exterior</li>
+          <li>48-hour delivery</li>
+          <li>Web & print resolution</li>
+        </ul>
+        <button class="btn-package" onclick="openEnquiry('Standard Package')">Enquire</button>
+      </div>
+      <div class="package-card featured">
+        <div class="featured-badge">Most Popular</div>
+        <p class="package-name">Premium</p>
+        <p class="package-price">Interior, Exterior & Drone · from £165</p>
+        <ul class="package-features">
+          <li>Up to 30 edited images</li>
+          <li>Full interior coverage</li>
+          <li>Front, rear & side exterior</li>
+          <li>Aerial drone photography</li>
+          <li>48-hour delivery</li>
+          <li>Web & print resolution</li>
+        </ul>
+        <button class="btn-package" onclick="openEnquiry('Premium Package')">Enquire</button>
+      </div>
+      <div class="package-card">
+        <p class="package-name">Drone Only</p>
+        <p class="package-price">Aerial Photography · from £85</p>
+        <ul class="package-features">
+          <li>Up to 10 aerial images</li>
+          <li>Top-down & oblique angles</li>
+          <li>Neighbourhood context shots</li>
+          <li>48-hour delivery</li>
+          <li>Perfect as an add-on</li>
+        </ul>
+        <button class="btn-package" onclick="openEnquiry('Drone Only Package')">Enquire</button>
+      </div>
+    </div>
+    <p class="packages-note reveal">All packages include a complimentary first shoot so you can assess quality before committing. Prices on request — get in touch to discuss.</p>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section class="process-section">
+  <div class="process-inner">
+    <p class="section-eyebrow reveal">How it works</p>
+    <h2 class="section-heading reveal">From booking to <em>live listing</em></h2>
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <p class="step-title">Get in touch</p>
+        <p class="step-desc">Send a quick enquiry with the property address and any specific requirements.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <p class="step-title">Book the shoot</p>
+        <p class="step-desc">We agree a time that suits the vendor. Shoot typically takes 1–2 hours.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <p class="step-title">Editing</p>
+        <p class="step-desc">Images are professionally edited for brightness, colour, and composition.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <p class="step-title">Delivered in 48h</p>
+        <p class="step-desc">Web-ready and print-ready files delivered via shared link, ready to upload.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COVERAGE ── -->
+<section id="coverage" class="coverage-section">
+  <div class="coverage-inner">
+    <div class="coverage-text reveal">
+      <p class="section-eyebrow">Coverage area</p>
+      <h2>Based in Cleckheaton,<br><em>covering West Yorkshire</em></h2>
+      <p>I'm based in Cleckheaton and cover the full West Yorkshire area — and I'm happy to travel further for the right job. No extra travel charge within a 20-mile radius.</p>
+      <div class="coverage-areas">
+        <span class="area-tag">Cleckheaton</span>
+        <span class="area-tag">Heckmondwike</span>
+        <span class="area-tag">Batley</span>
+        <span class="area-tag">Dewsbury</span>
+        <span class="area-tag">Mirfield</span>
+        <span class="area-tag">Birstall</span>
+        <span class="area-tag">Morley</span>
+        <span class="area-tag">Birkenshaw</span>
+        <span class="area-tag">Bradford</span>
+        <span class="area-tag">Leeds</span>
+        <span class="area-tag">Huddersfield</span>
+        <span class="area-tag">Halifax</span>
+        <span class="area-tag">+ Further on request</span>
+      </div>
+      <div class="coverage-turnaround">
+        <p><strong>48-hour turnaround guaranteed.</strong> Book the shoot, and edited images are in your inbox within two working days — ready to go live immediately.</p>
+      </div>
+    </div>
+    <div class="reveal" style="background:var(--mid); border:1px solid var(--border); aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; padding:3rem; text-align:center;">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.6"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      <p style="font-family:'Playfair Display',serif; font-size:1.2rem; color:#c9a84c; font-style:italic;">Licensed drone operator</p>
+      <p style="font-size:0.78rem; color:#6a6a60; line-height:1.7; max-width:240px;">CAA registered. Fully insured for commercial aerial photography across the UK.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    <div class="contact-left reveal">
+      <h2>Let's get your<br><em>listing live.</em></h2>
+      <p>Get in touch to discuss dates, packages, or to arrange a complimentary first shoot. I aim to respond within a few hours.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="contact-detail-text">
+          <p>Email</p>
+          <!-- UPDATE EMAIL BELOW -->
+          <a href="mailto:kiran@tinytangentstudios.co.uk">kiran@tinytangentstudios.co.uk</a>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="contact-detail-text">
+          <p>Based in</p>
+          <span>Cleckheaton, West Yorkshire</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-field">
+            <label>Your name</label>
+            <input type="text" placeholder="First & last name" />
+          </div>
+          <div class="form-field">
+            <label>Your email</label>
+            <input type="email" placeholder="your@email.com" />
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Agency / company</label>
+          <input type="text" placeholder="e.g. Robert Watts, independent seller…" />
+        </div>
+        <div class="form-field">
+          <label>Package</label>
+          <select>
+            <option value="">Select a package…</option>
+            <option>Standard — Interior & Exterior</option>
+            <option>Premium — Interior, Exterior & Drone</option>
+            <option>Drone Only</option>
+            <option>Not sure — let's discuss</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Property address & preferred date</label>
+          <textarea placeholder="Address of the property, and any preferred dates or timeframes…"></textarea>
+        </div>
+        <div class="form-submit-row">
+          <button class="form-submit" onclick="submitForm()">Send Enquiry</button>
+          <span class="form-note">I'll reply within a few hours.</span>
+        </div>
+        <div class="phone-reveal" id="phone-reveal">
+          <p>Prefer to call or WhatsApp?</p>
+          <a href="tel:+447716694983">+44 7716 694 983</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">Tiny <em>Tangent</em></span>
+  <p>Property Photography · Cleckheaton, West Yorkshire</p>
+  <p>© 2026 Kiran Chhina</p>
+</footer>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lb-close" onclick="closeLightbox()">×</button>
+  <button class="lb-nav lb-prev" onclick="lbNav(-1)">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button class="lb-nav lb-next" onclick="lbNav(1)">›</button>
+</div>
+
+<!-- ── ENQUIRY MODAL ── -->
+<div id="enquiry-modal" style="display:none; position:fixed; inset:0; z-index:500; background:rgba(0,0,0,0.7); align-items:center; justify-content:center; padding:2rem;" onclick="closeEnquiry(event)">
+  <div style="background:var(--card); border:1px solid var(--border); padding:2.5rem; max-width:440px; width:100%; position:relative;">
+    <button onclick="closeEnquiry()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--muted);">×</button>
+    <p style="font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;" id="modal-type-label"></p>
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:400;color:var(--white);margin-bottom:1.5rem;">Quick Enquiry</h3>
+    <div class="form-field" style="margin-bottom:1rem;"><label>Name</label><input type="text" placeholder="Your name"/></div>
+    <div class="form-field" style="margin-bottom:1rem;"><label>Email</label><input type="email" placeholder="your@email.com"/></div>
+    <div class="form-field" style="margin-bottom:1.5rem;"><label>Message</label><textarea placeholder="Any details about the property or shoot…" style="min-height:70px;"></textarea></div>
+    <button onclick="submitEnquiry()" style="width:100%;padding:0.85rem;background:var(--gold);color:var(--dark);border:none;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;font-family:'Outfit',sans-serif;">Send</button>
+  </div>
+</div>
+
+<script>
+// ── INIT HERO IMAGES ──────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  const grid = document.getElementById('hero-img-grid');
+  if (HERO_IMAGES.length >= 2) {
+    grid.innerHTML = HERO_IMAGES.slice(0,2).map(img => `
+      <div class="hero-img-cell">
+        <img src="${driveImg(img.id)}" alt="${img.label}" loading="eager">
+      </div>`).join('');
+  }
+
+  // ── PORTFOLIO GRID ──────────────────────────────────────────
+  const pg = document.getElementById('portfolio-grid');
+  if (PORTFOLIO.length === 0) {
+    pg.innerHTML = `<div class="masonry-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><span>Add photos in the PORTFOLIO config above</span></div>`;
+  } else {
+    pg.innerHTML = PORTFOLIO.map((p, i) => `
+      <div class="masonry-item" onclick="openLightbox(${i})">
+        <img src="${driveImg(p.id)}" alt="${p.label}" loading="lazy">
+        <div class="masonry-overlay"><span class="masonry-label">${p.label}</span></div>
+      </div>`).join('');
+  }
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+});
+
+// ── LIGHTBOX ──────────────────────────────────────────────────
+let lbIndex = 0;
+function openLightbox(i) {
+  lbIndex = i;
+  document.getElementById('lb-img').src = driveImg(PORTFOLIO[i].id);
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+  if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lb-close')) return;
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function lbNav(dir) {
+  lbIndex = (lbIndex + dir + PORTFOLIO.length) % PORTFOLIO.length;
+  document.getElementById('lb-img').src = driveImg(PORTFOLIO[lbIndex].id);
+}
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowRight') lbNav(1);
+  if (e.key === 'ArrowLeft') lbNav(-1);
+  if (e.key === 'Escape') { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow=''; }
+});
+
+// ── FORMS ──────────────────────────────────────────────────────
+function submitForm() {
+  document.querySelector('.form-submit').textContent = 'Enquiry sent ✓';
+  document.querySelector('.form-submit').style.background = '#4a7c5c';
+  document.getElementById('phone-reveal').style.display = 'block';
+}
+function openEnquiry(type) {
+  document.getElementById('modal-type-label').textContent = type;
+  const m = document.getElementById('enquiry-modal');
+  m.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeEnquiry(e) {
+  const m = document.getElementById('enquiry-modal');
+  if (e && e.target !== m) return;
+  m.style.display = 'none';
+  document.body.style.overflow = '';
+}
+function submitEnquiry() {
+  const btn = document.querySelector('#enquiry-modal button:last-of-type');
+  btn.textContent = 'Sent ✓'; btn.style.background = '#4a7c5c';
+}
+</script>
+</body>
+</html>
