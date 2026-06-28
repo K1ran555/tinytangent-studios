@@ -255,7 +255,7 @@ nav a.nav-link:hover::after{transform:scaleX(1);transform-origin:left;}
 .hero-img-top img,.hero-img-bottom img{
   width:100%;height:100%;object-fit:cover;
   transition:transform 0.8s cubic-bezier(0.16,1,0.3,1);
-}
+filter:brightness(1.08) contrast(1.04);}
 .hero-img-top:hover img,.hero-img-bottom:hover img{transform:scale(1.04);}
 .hero-placeholder{
   width:100%;height:100%;
@@ -632,7 +632,7 @@ nav a.nav-link:hover::after{transform:scaleX(1);transform-origin:left;}
 .prop-portfolio-inner{max-width:1300px;margin:0 auto;padding:0 3rem;}
 .prop-masonry{columns:3;gap:10px;}
 .masonry-item{break-inside:avoid;margin-bottom:10px;position:relative;overflow:hidden;cursor:pointer;}
-.masonry-item img{width:100%;display:block;transition:transform 0.6s ease;}
+.masonry-item img{width:100%;display:block;transition:transform 0.6s ease;filter:brightness(1.08) contrast(1.04);}
 .masonry-item:hover img{transform:scale(1.04);}
 .masonry-overlay{
   position:absolute;inset:0;
@@ -987,7 +987,7 @@ const VIDEOS = {
   personal:  [],
 };
 
-function driveImg(id){ return `https://drive.google.com/thumbnail?id=${id}&sz=w2000`; }
+function driveImg(id){ return `https://drive.google.com/uc?export=view&id=${id}`; }
 function driveThumb(id){ return `https://drive.google.com/thumbnail?id=${id}&sz=w800`; }
 function driveEmbed(id){ return `https://drive.google.com/file/d/${id}/preview`; }
 
