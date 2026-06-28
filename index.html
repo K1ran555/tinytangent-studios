@@ -1077,29 +1077,23 @@ function useFallback(grid){
 </script>
 
 <nav id="main-nav">
-  <a href="#" class="logo" onclick="switchPage('main')">TinyTangent <em>Studios</em></a>
+  <a href="#" class="logo">TinyTangent <em>Studios</em></a>
   <ul id="nav-links">
-    <li><a href="#" class="nav-link" onclick="switchPage('main');scrollToSection('services');closeNav()">Services</a></li>
-    <li><a href="#" class="nav-link" onclick="switchPage('main');scrollToSection('work');closeNav()">Work</a></li>
-    <li><a href="#" class="nav-link" onclick="switchPage('main');scrollToSection('booking-section');closeNav()">Book</a></li>
-    <li><a href="#" class="nav-link" onclick="switchPage('property');closeNav()">Property</a></li>
-    <li><a href="#" class="nav-link" onclick="switchPage('main');scrollToSection('about-section');closeNav()">About</a></li>
-    <li><a href="#" class="nav-book" onclick="switchPage('main');scrollToSection('client-gallery');closeNav()">Client Gallery</a></li>
+    <li><a href="#" class="nav-link" onclick="scrollToSection('prop-packages');closeNav()">Packages</a></li>
+    <li><a href="#" class="nav-link" onclick="scrollToSection('coverage');closeNav()">Coverage</a></li>
+    <li><a href="#" class="nav-book" onclick="scrollToSection('prop-contact');closeNav()">Enquire</a></li>
   </ul>
   <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<div class="page-tabs">
-  <button class="page-tab active" onclick="switchPage('main')">Portfolio</button>
-  <button class="page-tab" onclick="switchPage('property')">Property Photography</button>
-</div>
+
 
 <!-- ════════════════════════════════════
      MAIN PAGE
 ════════════════════════════════════ -->
-<div class="page-panel active" id="page-main">
+<div class="page-panel" id="page-main" style="display:none">
 
   <!-- Hero -->
   <section class="hero">
@@ -1319,7 +1313,7 @@ function useFallback(grid){
 <!-- ════════════════════════════════════
      PROPERTY PAGE
 ════════════════════════════════════ -->
-<div class="page-panel" id="page-property">
+<div class="page-panel active" id="page-property">
 
   <section class="prop-hero">
     <div class="prop-hero-left">
@@ -1461,7 +1455,7 @@ function useFallback(grid){
     </div>
   </section>
 
-  <section class="coverage-section">
+  <section class="coverage-section" id="coverage">
     <div class="coverage-inner">
       <div class="coverage-text reveal-left">
         <p class="eyebrow">Coverage area</p>
