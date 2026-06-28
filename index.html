@@ -985,6 +985,30 @@ footer p{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.05em;}
 .dark-toggle .icon-sun{display:none;}
 [data-theme="dark"] .dark-toggle .icon-moon{display:none;}
 [data-theme="dark"] .dark-toggle .icon-sun{display:block;}
+
+/* ── ABOUT SECTION ── */
+.about-section{background:var(--navy);padding:7rem 3rem;}
+.about-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.about-text .eyebrow{color:var(--gold);}
+.about-text .display{color:rgba(255,255,255,0.9);margin-bottom:1.2rem;}
+.about-text .display em{color:var(--gold-light);}
+.about-text .body-text{color:rgba(255,255,255,0.4);margin-bottom:1rem;}
+.about-creds{display:flex;flex-direction:column;gap:0.6rem;margin-top:1.8rem;}
+.about-cred{display:flex;align-items:center;gap:0.8rem;font-size:0.8rem;color:rgba(255,255,255,0.35);letter-spacing:0.03em;}
+.about-cred::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+.about-right{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:2.5rem;}
+.about-stat{margin-bottom:1.8rem;}
+.about-stat-num{font-family:'Cormorant',serif;font-size:3rem;font-weight:300;color:var(--gold);line-height:1;}
+.about-stat-label{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:0.3rem;}
+.about-stat-divider{width:100%;height:1px;background:rgba(255,255,255,0.06);margin-bottom:1.8rem;}
+@media(max-width:768px){.about-inner{grid-template-columns:1fr;gap:3rem;}.about-section{padding:5rem 1.5rem;}}
+[data-theme="dark"] .about-section{background:#0a0a0a;}
+
+/* ── FOOTER SOCIALS ── */
+.footer-socials{display:flex;gap:1rem;align-items:center;}
+.footer-social{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.12);border-radius:50%;color:rgba(255,255,255,0.3);transition:border-color 0.2s,color 0.2s;text-decoration:none;}
+.footer-social:hover{border-color:var(--gold);color:var(--gold);}
+.footer-social svg{width:13px;height:13px;}
 </style>
 </head>
 <body>
@@ -1126,6 +1150,7 @@ function useFallback(grid){
 <nav id="main-nav">
   <a href="#" class="logo">TinyTangent <em>Studios</em></a>
   <ul id="nav-links">
+    <li><a href="#" class="nav-link" onclick="scrollToSection('about');closeNav()">About</a></li>
     <li><a href="#" class="nav-link" onclick="scrollToSection('prop-packages');closeNav()">Packages</a></li>
     <li><a href="#" class="nav-link" onclick="scrollToSection('coverage');closeNav()">Coverage</a></li>
     <li><a href="#" class="nav-book" onclick="scrollToSection('prop-contact');closeNav()">Enquire</a></li>
@@ -1507,6 +1532,45 @@ function useFallback(grid){
     </div>
   </section>
 
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      <div class="about-text reveal-left">
+        <p class="eyebrow">About</p>
+        <h2 class="display">The person<br>behind the <em>lens.</em></h2>
+        <p class="body-text">TinyTangent Studios was founded in 2018 out of a genuine passion for visual storytelling. What started as freelance event photography has evolved into a full property media service — combining creative instinct with technical precision.</p>
+        <p class="body-text">An aerospace engineering background and an active PPL mean nothing is left to chance. Every shoot is planned, every drone flight is risk-assessed and CAA compliant, and every image is edited to the same standard regardless of the brief.</p>
+        <div class="about-creds">
+          <span class="about-cred">BEng Aerospace Engineering with Pilot Studies — UCLan</span>
+          <span class="about-cred">CAA Registered Commercial Drone Operator</span>
+          <span class="about-cred">Private Pilot Licence in progress</span>
+          <span class="about-cred">8+ years visual content creation</span>
+          <span class="about-cred">Based in West Yorkshire — no travel charge locally</span>
+        </div>
+      </div>
+      <div class="about-right reveal-right">
+        <div class="about-stat">
+          <div class="about-stat-num">48hr</div>
+          <div class="about-stat-label">Photography turnaround</div>
+        </div>
+        <div class="about-stat-divider"></div>
+        <div class="about-stat">
+          <div class="about-stat-num">20+</div>
+          <div class="about-stat-label">Projects delivered</div>
+        </div>
+        <div class="about-stat-divider"></div>
+        <div class="about-stat">
+          <div class="about-stat-num">8+</div>
+          <div class="about-stat-label">Years experience</div>
+        </div>
+        <div class="about-stat-divider"></div>
+        <div class="about-stat">
+          <div class="about-stat-num">CAA</div>
+          <div class="about-stat-label">Registered drone operator</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="coverage-section" id="coverage">
     <div class="coverage-inner">
       <div class="coverage-text reveal-left">
@@ -1583,7 +1647,19 @@ function useFallback(grid){
 
 <footer>
   <span class="footer-logo">TinyTangent <em>Studios</em></span>
+  <div class="footer-socials">
+    <a class="footer-social" href="https://www.instagram.com/tinytangentstudios" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a class="footer-social" href="https://www.tiktok.com/@tinytangentstudios" target="_blank" rel="noopener" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg>
+    </a>
+    <a class="footer-social" href="https://youtube.com/@tinytangent" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+    </a>
+  </div>
   <div class="footer-links">
+    <a href="links.html">All Links</a>
     <a href="privacy.html">Privacy Policy</a>
     <a href="terms.html">Terms & Conditions</a>
   </div>
