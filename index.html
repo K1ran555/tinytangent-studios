@@ -817,9 +817,9 @@ footer{
 footer p{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.05em;}
 
 /* ── LIGHTBOX ── */
-.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(10,10,10,0.97);align-items:center;justify-content:center;padding:2rem;}
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(10,10,10,0.88);align-items:center;justify-content:center;padding:2rem;}
 .lightbox.open{display:flex;}
-.lightbox img{max-width:96vw;max-height:94vh;object-fit:contain;box-shadow:0 0 60px rgba(0,0,0,0.8);}
+.lightbox img{max-width:75vw;max-height:80vh;object-fit:contain;box-shadow:0 25px 80px rgba(0,0,0,0.9);border-radius:4px;}
 .lb-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:rgba(255,255,255,0.5);font-size:2rem;cursor:pointer;transition:color 0.2s;line-height:1;}
 .lb-close:hover{color:var(--gold);}
 .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,0.3);font-size:2.5rem;cursor:pointer;transition:color 0.2s;padding:1rem;}
@@ -1140,10 +1140,15 @@ async function buildPropPortfolio(){
 function useFallback(grid){
   window._propIds = PROPERTY_FALLBACK.map(p=>p.id);
   grid.innerHTML = PROPERTY_FALLBACK.map((p,i)=>`
-    <div class="masonry-item" onclick="openDriveLb(${i},${JSON.stringify(window._propIds)})">
+    <div class="masonry-item" data-idx="${i}" data-src="${driveImg(p.id)}">
       <img src="${driveImg(p.id)}" alt="${p.label}" loading="lazy">
       <div class="masonry-overlay"><span class="masonry-label">${p.label}</span></div>
     </div>`).join('');
+  grid.querySelectorAll('.masonry-item').forEach(el=>{
+    el.addEventListener('click', function(){
+      openDriveLb(parseInt(this.dataset.idx), window._propIds);
+    });
+  });
 }
 </script>
 
