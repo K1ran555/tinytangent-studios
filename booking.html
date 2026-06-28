@@ -425,9 +425,8 @@ async function confirmBooking() {
   const startISO = `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}T${String(slot.hour).padStart(2,'0')}:00:00`;
   const endISO   = `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}T${String(slot.hour+2).padStart(2,'0')}:00:00`;
 
-  // ── Send to Netlify Forms ──────────────────────────────────
-  const netlifyPayload = new URLSearchParams({
-    'form-name': 'shoot-booking',
+  // ── Send to Formspree ──────────────────────────────────────
+  const formPayload = new URLSearchParams({
     name, email, phone: phone || 'not provided',
     package: pkg,
     address: addr,
@@ -437,13 +436,13 @@ async function confirmBooking() {
   }).toString();
 
   try {
-    await fetch('/', {
+    await fetch('https://formspree.io/f/mkoadgja', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: netlifyPayload
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: formPayload
     });
   } catch(e) {
-    console.warn('Netlify form submission failed:', e);
+    console.warn('Formspree submission failed:', e);
   }
 
   // ── Create Google Calendar event ──────────────────────────

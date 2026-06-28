@@ -1497,7 +1497,7 @@ function useFallback(grid){
         </div>
       </div>
       <div class="reveal-right">
-        <form class="contact-form" name="property-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handlePropSubmit(event)">
+        <form class="contact-form" name="property-enquiry" method="POST" onsubmit="handlePropSubmit(event)">
           <input type="hidden" name="form-name" value="property-enquiry" />
           <p style="display:none;"><input name="bot-field" /></p>
           <div class="form-row">
@@ -1559,7 +1559,7 @@ function useFallback(grid){
     <button class="modal-close" onclick="closeModal()">×</button>
     <p class="modal-type" id="modal-type"></p>
     <h3>Let's work together</h3>
-    <form name="general-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleModalSubmit(event)">
+    <form name="general-enquiry" method="POST" onsubmit="handleModalSubmit(event)">
       <input type="hidden" name="form-name" value="general-enquiry" />
       <input type="hidden" name="enquiry-type" id="modal-enquiry-type" value="" />
       <p style="display:none;"><input name="bot-field" /></p>
@@ -1575,7 +1575,7 @@ function useFallback(grid){
 </div>
 
 <!-- HIDDEN NETLIFY FORMS -->
-<form name="shoot-booking" netlify netlify-honeypot="bot-field" hidden>
+<form name="shoot-booking" netlify hidden>
   <input type="text" name="name" /><input type="email" name="email" />
   <input type="text" name="phone" /><input type="text" name="package" />
   <input type="text" name="address" /><input type="text" name="date" />
@@ -1731,7 +1731,8 @@ function handleModalSubmit(e){
   e.preventDefault();
   const btn=document.getElementById('modal-submit-btn');
   btn.textContent='Sending…';btn.disabled=true;
-  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(e.target)).toString()})
+  fetch('https://formspree.io/f/mkoadgja',{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(e.target)).toString()})
+  .then(r=>r.ok?r:Promise.reject())
   .then(()=>{btn.textContent='Sent ✓';btn.style.background='#4a7c5c';e.target.reset();})
   .catch(()=>{btn.textContent='Error — try again';btn.style.background='#8c3a3a';btn.disabled=false;});
 }
@@ -1739,7 +1740,8 @@ function handlePropSubmit(e){
   e.preventDefault();
   const btn=document.getElementById('prop-submit-btn');
   btn.textContent='Sending…';btn.disabled=true;
-  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(e.target)).toString()})
+  fetch('https://formspree.io/f/mkoadgja',{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(e.target)).toString()})
+  .then(r=>r.ok?r:Promise.reject())
   .then(()=>{btn.textContent='Enquiry sent ✓';btn.style.background='#4a7c5c';document.getElementById('phone-reveal').style.display='block';e.target.reset();})
   .catch(()=>{btn.textContent='Error — try again';btn.style.background='#8c3a3a';btn.disabled=false;});
 }

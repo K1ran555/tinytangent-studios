@@ -703,9 +703,22 @@ document.addEventListener('keydown', e => {
 
 // ── FORMS ──────────────────────────────────────────────────────
 function submitForm() {
-  document.querySelector('.form-submit').textContent = 'Enquiry sent ✓';
-  document.querySelector('.form-submit').style.background = '#4a7c5c';
-  document.getElementById('phone-reveal').style.display = 'block';
+  const btn = document.querySelector('.form-submit');
+  const form = btn.closest('form') || document.querySelector('.contact-form');
+  btn.textContent = 'Sending…'; btn.disabled = true;
+  const data = form ? new URLSearchParams(new FormData(form)).toString() : '';
+  fetch('https://formspree.io/f/mkoadgja', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: data
+  })
+  .then(r => r.ok ? r : Promise.reject())
+  .then(() => {
+    btn.textContent = 'Enquiry sent ✓'; btn.style.background = '#4a7c5c';
+    document.getElementById('phone-reveal').style.display = 'block';
+    if (form) form.reset();
+  })
+  .catch(() => { btn.textContent = 'Error — try again'; btn.style.background = '#8c3a3a'; btn.disabled = false; });
 }
 function openEnquiry(type) {
   document.getElementById('modal-type-label').textContent = type;
@@ -721,7 +734,16 @@ function closeEnquiry(e) {
 }
 function submitEnquiry() {
   const btn = document.querySelector('#enquiry-modal button:last-of-type');
-  btn.textContent = 'Sent ✓'; btn.style.background = '#4a7c5c';
+  const form = document.querySelector('#enquiry-modal form');
+  btn.textContent = 'Sending…'; btn.disabled = true;
+  fetch('https://formspree.io/f/mkoadgja', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: form ? new URLSearchParams(new FormData(form)).toString() : ''
+  })
+  .then(r => r.ok ? r : Promise.reject())
+  .then(() => { btn.textContent = 'Sent ✓'; btn.style.background = '#4a7c5c'; if(form) form.reset(); })
+  .catch(() => { btn.textContent = 'Error — try again'; btn.style.background = '#8c3a3a'; btn.disabled = false; });
 }
 </script>
 </body>
