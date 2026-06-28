@@ -661,6 +661,10 @@ nav a.nav-link:hover::after{transform:scaleX(1);transform-origin:left;}
 .packages-section{background:var(--white);padding:8rem 3rem;}
 .packages-inner{max-width:1300px;margin:0 auto;}
 .packages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem;}
+@media(min-width:1100px){.packages-grid{grid-template-columns:repeat(3,1fr);}
+.packages-grid .package-card:nth-child(4){margin-left:calc(50% + 0.75rem);}
+.packages-grid .package-card:nth-child(5){margin-right:calc(50% + 0.75rem);}}
+
 .package-card{
   padding:2.5rem 2rem;border:1px solid var(--border-light);
   background:var(--paper);position:relative;
@@ -1210,13 +1214,19 @@ function useFallback(grid){
           <div class="service-num">05</div>
           <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23,7 16,12 23,17 23,7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
           <h3>Videography</h3>
-          <p>Short films, highlight reels, and personal projects. Delivered via a shareable link.</p>
+          <p>Quick cuts, highlight reels, and full productions. Delivered via shareable link.</p>
         </div>
         <div class="service-card">
           <div class="service-num">06</div>
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 10l4.553-2.07A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.9L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+          <h3>Video Walkthrough</h3>
+          <p>Agent-presented 60–90 second property tours. Optimised for Instagram, TikTok and Rightmove.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">07</div>
           <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
           <h3>Fast Turnaround</h3>
-          <p>Property shoots in 48 hours. Events within the week. Editing style matched to your brief.</p>
+          <p>Property stills in 48 hours. Video walkthrough in 4 days. Always delivered on time.</p>
         </div>
       </div>
     </div>
@@ -1374,36 +1384,68 @@ function useFallback(grid){
       <div class="packages-grid reveal">
         <div class="package-card">
           <p class="pkg-name">Standard</p>
-          <p class="pkg-price">Interior & Exterior · from £95</p>
+          <p class="pkg-price">Photography · £95</p>
           <ul class="pkg-features">
-            <li>Up to 20 edited images</li><li>Interior rooms — all key spaces</li>
-            <li>Front & rear exterior</li><li>48-hour delivery</li><li>Web & print resolution</li>
+            <li>Up to 20 edited images</li>
+            <li>All key interior rooms</li>
+            <li>Front &amp; rear exterior</li>
+            <li>48-hour delivery</li>
+            <li>Web &amp; print resolution</li>
           </ul>
           <button class="btn-pkg" onclick="openModal('Standard Package')">Enquire</button>
         </div>
         <div class="package-card featured">
           <div class="featured-tag">Most Popular</div>
           <p class="pkg-name">Premium</p>
-          <p class="pkg-price">Interior, Exterior & Drone · from £165</p>
+          <p class="pkg-price">Photography &amp; Drone · £150</p>
           <ul class="pkg-features">
-            <li>Up to 30 edited images</li><li>Full interior coverage</li>
-            <li>Front, rear & side exterior</li><li>Aerial drone photography</li>
-            <li>48-hour delivery</li><li>Web & print resolution</li>
+            <li>Up to 30 edited images</li>
+            <li>Full interior &amp; exterior coverage</li>
+            <li>CAA drone aerial included</li>
+            <li>48-hour delivery</li>
+            <li>Web &amp; print resolution</li>
           </ul>
           <button class="btn-pkg" onclick="openModal('Premium Package')">Enquire</button>
         </div>
         <div class="package-card">
           <p class="pkg-name">Drone Only</p>
-          <p class="pkg-price">Aerial Photography · from £85</p>
+          <p class="pkg-price">Aerial Photography · £75</p>
           <ul class="pkg-features">
-            <li>Up to 10 aerial images</li><li>Top-down & oblique angles</li>
-            <li>Neighbourhood context shots</li><li>48-hour delivery</li>
-            <li>Works perfectly as an add-on</li>
+            <li>Up to 10 aerial images</li>
+            <li>Top-down &amp; oblique angles</li>
+            <li>Neighbourhood context shots</li>
+            <li>CAA registered &amp; compliant</li>
+            <li>48-hour delivery</li>
           </ul>
           <button class="btn-pkg" onclick="openModal('Drone Only Package')">Enquire</button>
         </div>
+        <div class="package-card">
+          <p class="pkg-name">Video Walkthrough</p>
+          <p class="pkg-price">Agent-Led Property Tour · £175</p>
+          <ul class="pkg-features">
+            <li>60–90 second guided tour</li>
+            <li>Agent-presented on camera</li>
+            <li>Optimised for Instagram, TikTok &amp; Rightmove</li>
+            <li>Music, titles &amp; colour grade</li>
+            <li>4-day delivery</li>
+          </ul>
+          <button class="btn-pkg" onclick="openModal('Video Walkthrough')">Enquire</button>
+        </div>
+        <div class="package-card featured">
+          <div class="featured-tag">Best Value — Save £75</div>
+          <p class="pkg-name">Full Service</p>
+          <p class="pkg-price">Photography, Drone &amp; Walkthrough · £250</p>
+          <ul class="pkg-features">
+            <li>Everything in Premium (photos + drone)</li>
+            <li>Agent-led video walkthrough</li>
+            <li>One booking, one invoice</li>
+            <li>Stills in 48 hrs · Video in 4 days</li>
+            <li>Save £75 vs booking individually</li>
+          </ul>
+          <button class="btn-pkg" onclick="openModal('Full Service Package')">Enquire</button>
+        </div>
       </div>
-      <p class="packages-note reveal">All packages include a complimentary first shoot. For larger or ongoing requirements, pricing can be discussed and agreed in person.</p>
+      <p class="packages-note reveal">50% deposit required to confirm all bookings. West Yorkshire coverage at no extra charge. Outside W. Yorks — travel supplement agreed before booking. CAA registered drone operator.</p>
     </div>
   </section>
 
@@ -1467,9 +1509,11 @@ function useFallback(grid){
             <label>Package *</label>
             <select name="package" required>
               <option value="">Select a package…</option>
-              <option>Standard — Interior & Exterior (from £95)</option>
-              <option>Premium — Interior, Exterior & Drone (from £165)</option>
-              <option>Drone Only (from £85)</option>
+              <option>Standard — Photography (£95)</option>
+              <option>Premium — Photography &amp; Drone (£150)</option>
+              <option>Drone Only (£75)</option>
+              <option>Video Walkthrough (£175)</option>
+              <option>Full Service — Photo, Drone &amp; Walkthrough (£250)</option>
               <option>Not sure — let's discuss</option>
             </select>
           </div>

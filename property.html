@@ -285,18 +285,20 @@ footer p { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; }
   ════════════════════════════════════════ -->
 <script>
 const HERO_IMAGES = [
-  { id: "1p2iyHeL71Laudr6HW49D9aIEjCftVRaU", label: "Living Room" },
-  { id: "141boktnW3D5mJ4bfDHRXlV0jvoliDk-P", label: "Lounge" },
+  { id: "DRIVE_ID_KITCHEN", label: "Kitchen / Open Plan Living" },
+  { id: "DRIVE_ID_LOUNGE", label: "Lounge Extension" },
 ];
 
 const PORTFOLIO = [
-  { id: "1p2iyHeL71Laudr6HW49D9aIEjCftVRaU", label: "Living Room · Example Property" },
-  { id: "141boktnW3D5mJ4bfDHRXlV0jvoliDk-P", label: "Lounge · Example Property" },
-  // Add more below — just paste Drive file IDs:
-  // { id: "DRIVE_FILE_ID", label: "Kitchen" },
-  // { id: "DRIVE_FILE_ID", label: "Master Bedroom" },
-  // { id: "DRIVE_FILE_ID", label: "Front Exterior" },
-  // { id: "DRIVE_FILE_ID", label: "Aerial View" },
+  { id: "DRIVE_ID_KITCHEN",  label: "Kitchen / Open Plan Living" },
+  { id: "DRIVE_ID_LOUNGE",   label: "Lounge Extension" },
+  { id: "DRIVE_ID_OB2",      label: "Exterior — Orangery" },
+  { id: "DRIVE_ID_OB1",      label: "Exterior — Rear Garden" },
+  { id: "DRIVE_ID_OFFICE1",  label: "Home Office" },
+  { id: "DRIVE_ID_OFFICE2",  label: "Home Office — Desk" },
+  { id: "DRIVE_ID_STAIRS",   label: "Hallway & Staircase" },
+  { id: "DRIVE_ID_TOILET",   label: "WC / Cloakroom" },
+  // To add more: upload to Google Drive → Share (Anyone with link) → paste file ID here
 ];
 
 function driveImg(id) {
@@ -419,44 +421,68 @@ function driveImg(id) {
     <div class="packages-grid reveal">
       <div class="package-card">
         <p class="package-name">Standard</p>
-        <p class="package-price">Interior & Exterior · from £95</p>
+        <p class="package-price">Photography · £95</p>
         <ul class="package-features">
           <li>Up to 20 edited images</li>
-          <li>Interior rooms — all key spaces</li>
-          <li>Front & rear exterior</li>
+          <li>All key interior rooms</li>
+          <li>Front &amp; rear exterior</li>
           <li>48-hour delivery</li>
-          <li>Web & print resolution</li>
+          <li>Web &amp; print resolution</li>
         </ul>
         <button class="btn-package" onclick="openEnquiry('Standard Package')">Enquire</button>
       </div>
       <div class="package-card featured">
         <div class="featured-badge">Most Popular</div>
         <p class="package-name">Premium</p>
-        <p class="package-price">Interior, Exterior & Drone · from £165</p>
+        <p class="package-price">Photography &amp; Drone · £150</p>
         <ul class="package-features">
           <li>Up to 30 edited images</li>
-          <li>Full interior coverage</li>
-          <li>Front, rear & side exterior</li>
-          <li>Aerial drone photography</li>
+          <li>Full interior &amp; exterior coverage</li>
+          <li>CAA drone aerial included</li>
           <li>48-hour delivery</li>
-          <li>Web & print resolution</li>
+          <li>Web &amp; print resolution</li>
         </ul>
         <button class="btn-package" onclick="openEnquiry('Premium Package')">Enquire</button>
       </div>
       <div class="package-card">
         <p class="package-name">Drone Only</p>
-        <p class="package-price">Aerial Photography · from £85</p>
+        <p class="package-price">Aerial Photography · £75</p>
         <ul class="package-features">
           <li>Up to 10 aerial images</li>
-          <li>Top-down & oblique angles</li>
+          <li>Top-down &amp; oblique angles</li>
           <li>Neighbourhood context shots</li>
+          <li>CAA registered &amp; compliant</li>
           <li>48-hour delivery</li>
-          <li>Perfect as an add-on</li>
         </ul>
         <button class="btn-package" onclick="openEnquiry('Drone Only Package')">Enquire</button>
       </div>
+      <div class="package-card">
+        <p class="package-name">Video Walkthrough</p>
+        <p class="package-price">Agent-Led Property Tour · £175</p>
+        <ul class="package-features">
+          <li>60–90 second guided tour</li>
+          <li>Agent-presented on camera</li>
+          <li>Optimised for social &amp; Rightmove</li>
+          <li>Music, titles &amp; colour grade</li>
+          <li>4-day delivery</li>
+        </ul>
+        <button class="btn-package" onclick="openEnquiry('Video Walkthrough')">Enquire</button>
+      </div>
+      <div class="package-card featured">
+        <div class="featured-badge">Best Value — Save £75</div>
+        <p class="package-name">Full Service</p>
+        <p class="package-price">Photography, Drone &amp; Walkthrough · £250</p>
+        <ul class="package-features">
+          <li>Everything in Premium (photos + drone)</li>
+          <li>Agent-led video walkthrough</li>
+          <li>One booking, one invoice</li>
+          <li>Stills in 48 hrs · Video in 4 days</li>
+          <li>Save £75 vs booking individually</li>
+        </ul>
+        <button class="btn-package" onclick="openEnquiry('Full Service Package')">Enquire</button>
+      </div>
     </div>
-    <p class="packages-note reveal">All packages include a complimentary first shoot so you can assess quality before committing. Prices on request — get in touch to discuss.</p>
+    <p class="packages-note reveal">50% deposit required to confirm all bookings. West Yorkshire coverage at no extra charge. Outside W. Yorks — travel supplement agreed before booking. CAA registered drone operator.</p>
   </div>
 </section>
 
@@ -495,25 +521,23 @@ function driveImg(id) {
   <div class="coverage-inner">
     <div class="coverage-text reveal">
       <p class="section-eyebrow">Coverage area</p>
-      <h2>Based in Cleckheaton,<br><em>covering West Yorkshire</em></h2>
-      <p>I'm based in Cleckheaton and cover the full West Yorkshire area — and I'm happy to travel further for the right job. No extra travel charge within a 20-mile radius.</p>
+      <h2>Based in West Yorkshire,<br><em>covering the region and beyond</em></h2>
+      <p>West Yorkshire shoots are covered at no extra charge — no hidden travel fees, no markups. Outside West Yorkshire, a travel supplement is agreed in writing before booking so there are no surprises.</p>
       <div class="coverage-areas">
         <span class="area-tag">Cleckheaton</span>
-        <span class="area-tag">Heckmondwike</span>
-        <span class="area-tag">Batley</span>
-        <span class="area-tag">Dewsbury</span>
-        <span class="area-tag">Mirfield</span>
-        <span class="area-tag">Birstall</span>
-        <span class="area-tag">Morley</span>
-        <span class="area-tag">Birkenshaw</span>
         <span class="area-tag">Bradford</span>
         <span class="area-tag">Leeds</span>
         <span class="area-tag">Huddersfield</span>
         <span class="area-tag">Halifax</span>
-        <span class="area-tag">+ Further on request</span>
+        <span class="area-tag">Wakefield</span>
+        <span class="area-tag">Dewsbury</span>
+        <span class="area-tag">Batley</span>
+        <span class="area-tag">Morley</span>
+        <span class="area-tag">Birstall</span>
+        <span class="area-tag">+ Surrounding areas on request</span>
       </div>
       <div class="coverage-turnaround">
-        <p><strong>48-hour turnaround guaranteed.</strong> Book the shoot, and edited images are in your inbox within two working days — ready to go live immediately.</p>
+        <p><strong>Up to 48-hour turnaround on photography.</strong> Edited images in your inbox within two working days — ready to go live immediately. Video walkthrough delivered within 4 days.</p>
       </div>
     </div>
     <div class="reveal" style="background:var(--mid); border:1px solid var(--border); aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; padding:3rem; text-align:center;">
@@ -570,9 +594,11 @@ function driveImg(id) {
           <label>Package</label>
           <select>
             <option value="">Select a package…</option>
-            <option>Standard — Interior & Exterior</option>
-            <option>Premium — Interior, Exterior & Drone</option>
-            <option>Drone Only</option>
+            <option>Standard — Photography (£95)</option>
+            <option>Premium — Photography &amp; Drone (£150)</option>
+            <option>Drone Only (£75)</option>
+            <option>Video Walkthrough (£175)</option>
+            <option>Full Service — Photo, Drone &amp; Walkthrough (£250)</option>
             <option>Not sure — let's discuss</option>
           </select>
         </div>
