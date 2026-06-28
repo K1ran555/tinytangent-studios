@@ -303,7 +303,17 @@ const PORTFOLIO = [
 ];
 
 function driveImg(id) {
-  return `https://drive.google.com/uc?export=view&id=${id}`;
+  const map = {
+    "1jcx3ij7_4c2zXPOA8YkJ1Nr94Xj9acf3": "images/kitchen.jpg",
+    "19RXrqzRDxIR76g4oWIoIViakNN2XNaQ9":  "images/lounge.jpg",
+    "1Vk_NkNjZVY2YM5oAFsVzChPjFKA6gnhQ":  "images/ob1.jpg",
+    "1G4DufPkq_H1dLO9TTvIvulCe3gg6kFJ5":  "images/ob2.jpg",
+    "1-RSV1l-QzieLMYhLgeTeG5Jvww6s4Hff":  "images/office_1.jpg",
+    "14y9DREhu4ziMbZORATtdluhoOHCxZpZs":  "images/office_2.jpg",
+    "1Ll0gIAVYOoZSqMqs8ZNDsz01jncdIrkp":  "images/stairs.jpg",
+    "1T0LkOzTsMhvA4RtsmHLvYkPkZr74XEog":  "images/toilet.jpg",
+  };
+  return map[id] || `https://drive.google.com/uc?export=view&id=${id}`;
 }
 </script>
 
