@@ -152,6 +152,7 @@ nav a:hover { color: var(--gold); }
 .packages-section { background: var(--surface); padding: 6rem 3rem; }
 .packages-inner { max-width: 1100px; margin: 0 auto; }
 .packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+@media(min-width:900px){.packages-grid{grid-template-columns:repeat(5,1fr);}}
 .package-card { border: 1px solid var(--border); padding: 2.5rem 2rem; position: relative; transition: border-color 0.3s, transform 0.3s; background: var(--card); }
 .package-card:hover { border-color: var(--gold); transform: translateY(-4px); }
 .package-card.featured { border-color: var(--gold); background: var(--mid); }
@@ -302,7 +303,7 @@ const PORTFOLIO = [
 ];
 
 function driveImg(id) {
-  return `https://drive.google.com/thumbnail?id=${id}&sz=w1200`;
+  return `https://drive.google.com/thumbnail?id=${id}&sz=w2000`;
 }
 </script>
 
@@ -524,7 +525,6 @@ function driveImg(id) {
       <h2>Based in West Yorkshire,<br><em>covering the region and beyond</em></h2>
       <p>West Yorkshire shoots are covered at no extra charge — no hidden travel fees, no markups. Outside West Yorkshire, a travel supplement is agreed in writing before booking so there are no surprises.</p>
       <div class="coverage-areas">
-        <span class="area-tag">Cleckheaton</span>
         <span class="area-tag">Bradford</span>
         <span class="area-tag">Leeds</span>
         <span class="area-tag">Huddersfield</span>
@@ -570,7 +570,7 @@ function driveImg(id) {
         </div>
         <div class="contact-detail-text">
           <p>Based in</p>
-          <span>Cleckheaton, West Yorkshire</span>
+          <span>West Yorkshire</span>
         </div>
       </div>
     </div>
@@ -621,7 +621,7 @@ function driveImg(id) {
 
 <footer>
   <span class="footer-logo">Tiny <em>Tangent</em></span>
-  <p>Property Photography · Cleckheaton, West Yorkshire</p>
+  <p>Property Photography · West Yorkshire</p>
   <p>© 2026 Kiran Chhina</p>
 </footer>
 

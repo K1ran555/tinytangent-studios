@@ -662,9 +662,7 @@ nav a.nav-link:hover::after{transform:scaleX(1);transform-origin:left;}
 .packages-section{background:var(--white);padding:8rem 3rem;}
 .packages-inner{max-width:1300px;margin:0 auto;}
 .packages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem;}
-@media(min-width:1100px){.packages-grid{grid-template-columns:repeat(3,1fr);}
-.packages-grid .package-card:nth-child(4){margin-left:calc(50% + 0.75rem);}
-.packages-grid .package-card:nth-child(5){margin-right:calc(50% + 0.75rem);}}
+@media(min-width:900px){.packages-grid{grid-template-columns:repeat(5,1fr);}}
 
 .package-card{
   padding:2.5rem 2rem;border:1px solid var(--border-light);
@@ -968,13 +966,13 @@ const DRIVE_FOLDERS = {
 };
 
 const HERO_IMAGES = [
-  { id: "1p2iyHeL71Laudr6HW49D9aIEjCftVRaU", label: "Living Room" },
-  { id: "141boktnW3D5mJ4bfDHRXlV0jvoliDk-P", label: "Lounge" },
+  { id: "1jcx3ij7_4c2zXPOA8YkJ1Nr94Xj9acf3", label: "Kitchen / Open Plan Living" },
+  { id: "19RXrqzRDxIR76g4oWIoIViakNN2XNaQ9", label: "Lounge Extension" },
 ];
 
 const PROPERTY_FALLBACK = [
-  { id: "1p2iyHeL71Laudr6HW49D9aIEjCftVRaU", label: "Living Room · Example Property" },
-  { id: "141boktnW3D5mJ4bfDHRXlV0jvoliDk-P", label: "Lounge · Example Property" },
+  { id: "1jcx3ij7_4c2zXPOA8YkJ1Nr94Xj9acf3", label: "Kitchen / Open Plan Living" },
+  { id: "19RXrqzRDxIR76g4oWIoIViakNN2XNaQ9", label: "Lounge Extension" },
 ];
 
 const VIDEOS = {
@@ -983,7 +981,7 @@ const VIDEOS = {
   personal:  [],
 };
 
-function driveImg(id){ return `https://drive.google.com/thumbnail?id=${id}&sz=w1200`; }
+function driveImg(id){ return `https://drive.google.com/thumbnail?id=${id}&sz=w2000`; }
 function driveThumb(id){ return `https://drive.google.com/thumbnail?id=${id}&sz=w800`; }
 function driveEmbed(id){ return `https://drive.google.com/file/d/${id}/preview`; }
 
@@ -1154,7 +1152,7 @@ function useFallback(grid){
     <div class="reveal-left">
       <p class="eyebrow">About Kiran</p>
       <h2 class="display">A photographer<br>who <em>sees differently.</em></h2>
-      <p class="body-text">Based in Cleckheaton, West Yorkshire. Under the TinyTangent Studios name, I've been shooting events and commercial work since 2018 — over 20 projects and counting.</p>
+      <p class="body-text">Based in West Yorkshire. Under the TinyTangent Studios name, I've been shooting events and commercial work since 2018 — over 20 projects and counting.</p>
       <p class="body-text">From weddings and birthdays to property listings — I aim to capture things as they actually are, not as they're staged to be.</p>
       <button class="btn-outline" style="margin-top:1.5rem;" onclick="scrollToSection('contact-section')">Work with me</button>
     </div>
@@ -1467,10 +1465,10 @@ function useFallback(grid){
     <div class="coverage-inner">
       <div class="coverage-text reveal-left">
         <p class="eyebrow">Coverage area</p>
-        <h2 class="display">Based in Cleckheaton,<br><em>covering West Yorkshire</em></h2>
+        <h2 class="display">Based in <em>West Yorkshire</em></h2>
         <p>No additional travel charge within a 20-mile radius. Available outside West Yorkshire — travel costs agreed in advance based on distance.</p>
         <div class="coverage-areas">
-          <span class="area-tag">Cleckheaton</span><span class="area-tag">Heckmondwike</span><span class="area-tag">Batley</span><span class="area-tag">Dewsbury</span><span class="area-tag">Mirfield</span><span class="area-tag">Birstall</span><span class="area-tag">Morley</span><span class="area-tag">Birkenshaw</span><span class="area-tag">Bradford</span><span class="area-tag">Leeds</span><span class="area-tag">Huddersfield</span><span class="area-tag">Halifax</span><span class="area-tag">+ Nationwide (travel charged by distance)</span>
+          <span class="area-tag">Heckmondwike</span><span class="area-tag">Batley</span><span class="area-tag">Dewsbury</span><span class="area-tag">Mirfield</span><span class="area-tag">Birstall</span><span class="area-tag">Morley</span><span class="area-tag">Birkenshaw</span><span class="area-tag">Bradford</span><span class="area-tag">Leeds</span><span class="area-tag">Huddersfield</span><span class="area-tag">Halifax</span><span class="area-tag">+ Outside W. Yorks — supplement agreed before booking</span>
         </div>
         <div class="coverage-note"><p><strong>48-hour turnaround guaranteed.</strong> Edited images in your inbox within two working days — ready to go live immediately.</p></div>
       </div>
@@ -1494,7 +1492,7 @@ function useFallback(grid){
         </div>
         <div class="contact-detail">
           <div class="contact-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div class="contact-detail-text"><p>Based in</p><span>Cleckheaton, West Yorkshire</span></div>
+          <div class="contact-detail-text"><p>Based in</p><span>West Yorkshire</span></div>
         </div>
       </div>
       <div class="reveal-right">
@@ -1543,7 +1541,7 @@ function useFallback(grid){
     <a href="privacy.html">Privacy Policy</a>
     <a href="terms.html">Terms & Conditions</a>
   </div>
-  <p>© 2026 Kiran Chhina · Cleckheaton, West Yorkshire</p>
+  <p>© 2026 Kiran Chhina · West Yorkshire</p>
 </footer>
 
 <!-- LIGHTBOX -->
