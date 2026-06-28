@@ -973,6 +973,12 @@ const HERO_IMAGES = [
 const PROPERTY_FALLBACK = [
   { id: "1jcx3ij7_4c2zXPOA8YkJ1Nr94Xj9acf3", label: "Kitchen / Open Plan Living" },
   { id: "19RXrqzRDxIR76g4oWIoIViakNN2XNaQ9", label: "Lounge Extension" },
+  { id: "1Vk_NkNjZVY2YM5oAFsVzChPjFKA6gnhQ", label: "Exterior — Rear Garden" },
+  { id: "1G4DufPkq_H1dLO9TTvIvulCe3gg6kFJ5", label: "Exterior — Orangery" },
+  { id: "1-RSV1l-QzieLMYhLgeTeG5Jvww6s4Hff", label: "Home Office" },
+  { id: "14y9DREhu4ziMbZORATtdluhoOHCxZpZs", label: "Home Office — Desk" },
+  { id: "1Ll0gIAVYOoZSqMqs8ZNDsz01jncdIrkp", label: "Hallway & Staircase" },
+  { id: "1T0LkOzTsMhvA4RtsmHLvYkPkZr74XEog", label: "WC / Cloakroom" },
 ];
 
 const VIDEOS = {
@@ -1051,20 +1057,7 @@ function buildEmpty(enquiryType){
 async function buildPropPortfolio(){
   const grid = document.getElementById('prop-portfolio-grid');
   if(!grid) return;
-  try{
-    const subs = await getFolders(DRIVE_FOLDERS.property);
-    let all = [];
-    if(subs.length>0){
-      for(const s of subs){ const imgs=await getImages(s.id); all=all.concat(imgs.map(f=>({...f,folder:s.name}))); }
-    } else { all = await getImages(DRIVE_FOLDERS.property); }
-    if(!all.length){ useFallback(grid); return; }
-    window._propIds = all.map(f=>f.id);
-    grid.innerHTML = all.map((f,i)=>`
-      <div class="masonry-item" onclick="openDriveLb(${i},${JSON.stringify(window._propIds)})">
-        <img src="${driveThumb(f.id)}" alt="${f.name}" loading="lazy">
-        <div class="masonry-overlay"><span class="masonry-label">${f.folder?f.folder+' · ':''}${f.name.replace(/\.[^.]+$/,'')}</span></div>
-      </div>`).join('');
-  } catch(e){ useFallback(grid); }
+  useFallback(grid);
 }
 function useFallback(grid){
   window._propIds = PROPERTY_FALLBACK.map(p=>p.id);
