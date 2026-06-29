@@ -720,6 +720,12 @@ document.addEventListener('keydown', e => {
 
 // ── FORMS ──────────────────────────────────────────────────────
 function submitForm() {
+  const consent = document.getElementById('prop-consent');
+  if (consent && !consent.checked) {
+    consent.closest('label').style.color = '#c0392b';
+    consent.focus();
+    return;
+  }
   const btn = document.querySelector('.form-submit');
   const form = btn.closest('form') || document.querySelector('.contact-form');
   btn.textContent = 'Sending…'; btn.disabled = true;
