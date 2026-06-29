@@ -1294,7 +1294,7 @@ function useFallback(grid){
           <div class="service-num">06</div>
           <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 10l4.553-2.07A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.9L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
           <h3>Video Walkthrough</h3>
-          <p>Agent-presented 60–90 second property tours. Optimised for Instagram, TikTok and Rightmove.</p>
+          <p>Agent-presented 60–90 second property tours. Optimised for Instagram, TikTok and property portals.</p>
         </div>
         <div class="service-card">
           <div class="service-num">07</div>
@@ -1401,7 +1401,7 @@ function useFallback(grid){
       <div class="prop-hero-number">P</div>
       <p class="prop-hero-tag">West Yorkshire · Property Photography</p>
       <h1>Listings that<br><em>stand out.</em></h1>
-      <p class="prop-hero-desc">Professional interior, exterior, and aerial drone photography for estate agents across West Yorkshire — delivered in 48 hours, ready for Rightmove.</p>
+      <p class="prop-hero-desc">Professional interior, exterior, and aerial drone photography for estate agents across West Yorkshire — delivered in 48 hours, ready for any portal.</p>
       <div class="prop-hero-actions">
         <button class="btn-primary" onclick="scrollToSection('prop-contact')">Book a Free Shoot</button>
         <button class="btn-outline" onclick="scrollToSection('prop-portfolio')">View the Work</button>
@@ -1430,7 +1430,7 @@ function useFallback(grid){
           <p class="body-text" style="max-width:340px;margin-top:1rem;">No coordinating multiple suppliers. No chasing different invoices. One CAA-registered operator handles stills, aerial, and video — and delivers within 48 hours.</p>
         </div>
         <div class="why-points reveal-right">
-          <div class="why-point"><div class="why-num">01</div><h4>48-hour turnaround</h4><p>Photography edited and delivered within 48 hours of the shoot — ready to go live on Rightmove or Zoopla the same day.</p></div>
+          <div class="why-point"><div class="why-num">01</div><h4>48-hour turnaround</h4><p>Photography edited and delivered within 48 hours of the shoot — ready to go live on your portal of choice the same day.</p></div>
           <div class="why-point"><div class="why-num">02</div><h4>CAA registered drone operator</h4><p>Fully licensed and insured for commercial aerial work. No legal risk for you — compliance is handled before we arrive on site.</p></div>
           <div class="why-point"><div class="why-num">03</div><h4>Deliberate, planned shots</h4><p>An aerospace engineering background means every angle is considered. Nothing is left to chance — each frame is composed to show the property at its best.</p></div>
           <div class="why-point"><div class="why-num">04</div><h4>All services, one person</h4><p>Photography, drone aerial, and agent-led video walkthrough — all in a single visit. One invoice, no supplier coordination, no scheduling headaches.</p></div>
@@ -1500,7 +1500,7 @@ function useFallback(grid){
           <ul class="pkg-features">
             <li>60–90 second guided tour</li>
             <li>Agent-presented on camera</li>
-            <li>Optimised for Instagram, TikTok &amp; Rightmove</li>
+            <li>Optimised for Instagram, TikTok &amp; any portal</li>
             <li>Music, titles &amp; colour grade</li>
             <li>4-day delivery</li>
           </ul>
@@ -1545,7 +1545,7 @@ function useFallback(grid){
         <p class="body-text">TinyTangent Studios was founded in 2018 out of a genuine passion for visual storytelling. What started as freelance event photography has evolved into a full property media service — combining creative instinct with technical precision.</p>
         <p class="body-text">An aerospace engineering background and an active PPL mean nothing is left to chance. Every shoot is planned, every drone flight is risk-assessed and CAA compliant, and every image is edited to the same standard regardless of the brief.</p>
         <div class="about-creds">
-          <span class="about-cred">BEng Aerospace Engineering with Pilot Studies — UCLan</span>
+          <span class="about-cred">MEng Aerospace Engineering with Pilot Studies — UCLan</span>
           <span class="about-cred">CAA Registered Commercial Drone Operator</span>
           <span class="about-cred">Private Pilot Licence in progress</span>
           <span class="about-cred">8+ years visual content creation</span>
@@ -1650,6 +1650,34 @@ function useFallback(grid){
 
 </div><!-- /page-property -->
 
+<!-- REVIEW PORTAL -->
+<section id="reviews" style="padding:4rem 2rem;background:var(--cream);border-top:1px solid var(--border);">
+  <div style="max-width:760px;margin:0 auto;">
+    <h2 style="font-family:'Cormorant',serif;font-size:2rem;font-weight:400;margin-bottom:0.5rem;">Client Reviews</h2>
+    <p style="color:var(--muted);font-size:0.85rem;margin-bottom:2rem;">Verified submissions only — reviews are published after email confirmation.</p>
+
+    <div id="review-list" style="display:flex;flex-direction:column;gap:1.5rem;margin-bottom:2.5rem;">
+      <!-- Approved reviews go here -->
+    </div>
+
+    <details style="border:1px solid var(--border);border-radius:6px;padding:1.25rem;">
+      <summary style="cursor:pointer;font-weight:600;font-size:0.95rem;list-style:none;">Leave a review ↓</summary>
+      <div style="margin-top:1.25rem;display:flex;flex-direction:column;gap:0.75rem;">
+        <input id="rv-email" type="email" placeholder="Your email (for verification)" style="padding:0.6rem 0.75rem;border:1px solid var(--border);border-radius:4px;background:var(--paper);color:var(--ink);font-size:0.9rem;" />
+        <input id="rv-name" type="text" placeholder="Your name / agency" style="padding:0.6rem 0.75rem;border:1px solid var(--border);border-radius:4px;background:var(--paper);color:var(--ink);font-size:0.9rem;" />
+        <textarea id="rv-body" rows="4" placeholder="Your review..." style="padding:0.6rem 0.75rem;border:1px solid var(--border);border-radius:4px;background:var(--paper);color:var(--ink);font-size:0.9rem;resize:vertical;"></textarea>
+        <select id="rv-stars" style="padding:0.6rem 0.75rem;border:1px solid var(--border);border-radius:4px;background:var(--paper);color:var(--ink);font-size:0.9rem;">
+          <option value="5">★★★★★ — Excellent</option>
+          <option value="4">★★★★☆ — Good</option>
+          <option value="3">★★★☆☆ — Average</option>
+        </select>
+        <button onclick="submitReview()" style="padding:0.75rem;background:var(--gold);color:var(--white);border:none;border-radius:4px;cursor:pointer;font-weight:600;font-size:0.9rem;letter-spacing:0.04em;">Submit for Verification</button>
+        <p id="rv-msg" style="font-size:0.85rem;min-height:1.2em;"></p>
+      </div>
+    </details>
+  </div>
+</section>
+
 <footer>
   <span class="footer-logo">TinyTangent <em>Studios</em></span>
   <div class="footer-socials">
@@ -1668,7 +1696,7 @@ function useFallback(grid){
     <a href="privacy.html">Privacy Policy</a>
     <a href="terms.html">Terms & Conditions</a>
   </div>
-  <p>© 2026 Kiran Chhina · West Yorkshire</p>
+  <p>© 2026 TinyTangent Studios · West Yorkshire</p>
 </footer>
 
 <!-- LIGHTBOX -->
@@ -1943,6 +1971,33 @@ function toggleDark(){
   const saved = localStorage.getItem('tts-theme');
   if(saved === 'dark') document.documentElement.setAttribute('data-theme','dark');
 })();
+
+// Review portal submission
+async function submitReview(){
+  const email = document.getElementById('rv-email').value.trim();
+  const name = document.getElementById('rv-name').value.trim();
+  const body = document.getElementById('rv-body').value.trim();
+  const stars = document.getElementById('rv-stars').value;
+  const msg = document.getElementById('rv-msg');
+  if(!email||!name||!body){msg.style.color='#c0392b';msg.textContent='Please fill in all fields.';return;}
+  msg.style.color='var(--muted)';msg.textContent='Sending...';
+  try{
+    const res = await fetch('https://formspree.io/f/mkoadgja',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({email,name,review:body,stars,_subject:'New TTS Review — '+name})
+    });
+    if(res.ok){
+      msg.style.color='#27ae60';
+      msg.textContent='Thanks! Your review will appear once verified.';
+      document.getElementById('rv-email').value='';
+      document.getElementById('rv-name').value='';
+      document.getElementById('rv-body').value='';
+    } else {
+      msg.style.color='#c0392b';msg.textContent='Something went wrong. Try again or email kiran@tinytangentstudios.co.uk.';
+    }
+  }catch(e){msg.style.color='#c0392b';msg.textContent='Network error. Please try again.';}
+}
 </script>
 </body>
 </html>
