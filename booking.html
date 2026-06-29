@@ -436,56 +436,8 @@ async function confirmBooking() {
     console.warn('Formspree submission failed:', e);
   }
 
-  // ── Create Google Calendar event ──────────────────────────
-  try {
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 1000,
-        system: "You are a booking assistant for TinyTangent Studios. When asked to create a calendar event, use the Google Calendar MCP tool to create it and confirm. Respond with JSON: {success: true, message: 'string'}",
-        messages: [{
-          role: "user",
-          content: `Create a Google Calendar event with these details:
-Title: TinyTangent Shoot — ${name}
-Start: ${startISO}
-End: ${endISO}
-Timezone: Europe/London
-Location: ${addr}
-Description: Client: ${name}\nEmail: ${email}\nPhone: ${phone || 'not provided'}\nPackage: ${pkg}\nAddress: ${addr}\nNotes: ${notes || 'none'}
-Attendees: ${email}
-Respond only with JSON {success: true, message: "Booking confirmed for [date] at [time]"}`
-        }],
-        mcp_servers: [{
-          type: "url",
-          url: "https://calendarmcp.googleapis.com/mcp/v1",
-          name: "google-calendar"
-        }]
-      })
-    });
-
-    const data = await response.json();
-    const textBlock = data.content?.find(c => c.type === 'text');
-    let result = { success: true, message: `Booking confirmed for ${selDate} at ${slot.label}` };
-    if (textBlock) {
-      try {
-        const clean = textBlock.text.replace(/```json|```/g,'').trim();
-        const parsed = JSON.parse(clean);
-        if (parsed.success !== undefined) result = parsed;
-      } catch(e) {}
-    }
-
-    if (result.success) {
-      showSuccess(name, selDate, slot);
-    } else {
-      throw new Error(result.message || 'Unknown error');
-    }
-  } catch(e) {
-    // Calendar failed but Netlify succeeded — still show success
-    // Kiran will receive the email and can follow up
-    showSuccess(name, selDate, slot);
-  }
+  // Show success — Kiran receives booking details via Formspree email
+  showSuccess(name, selDate, slot);
 }
 
 function showSuccess(name, date, slot) {
