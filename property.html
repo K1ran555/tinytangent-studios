@@ -22,6 +22,50 @@
   --white: #e8e4d8;
   --text: #c8c4b8;
 }
+/* ── LIGHT MODE ── */
+[data-theme="light"] {
+  --bg: #f5f2ed;
+  --surface: #edeae4;
+  --card: #e8e4dc;
+  --dark: #f0ece4;
+  --mid: #dedad0;
+  --muted: #7a7060;
+  --border: #d0cab8;
+  --white: #1a1a14;
+  --text: #2a2820;
+  --navy: #1a2a3a;
+  --cream: #1a1a14;
+}
+[data-theme="light"] body { background: var(--bg); color: var(--text); }
+[data-theme="light"] nav { background: rgba(245,242,237,0.97); border-bottom: 1px solid var(--border); }
+[data-theme="light"] .hero-left { background: #e8e4dc; }
+[data-theme="light"] .hero-right { background: #dedad0; }
+[data-theme="light"] .package-card { background: #edeae4; border-color: var(--border); }
+[data-theme="light"] .package-card.featured { background: var(--navy); }
+[data-theme="light"] .packages-section { background: #ece8e0; }
+[data-theme="light"] .process-section { background: #f0ece4; }
+[data-theme="light"] .contact-section { background: #e8e4dc; }
+[data-theme="light"] .contact-form input,
+[data-theme="light"] .contact-form select,
+[data-theme="light"] .contact-form textarea { background: #f5f2ed; border-color: var(--border); color: var(--text); }
+[data-theme="light"] footer { background: #1a1a14; }
+[data-theme="light"] .masonry-item img { filter: brightness(0.98); }
+
+/* ── DARK TOGGLE BUTTON ── */
+.dark-toggle {
+  position: fixed; top: 1rem; right: 1.2rem; z-index: 300;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--card); border: 1px solid var(--border);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+.dark-toggle:hover { background: var(--gold-pale); border-color: var(--gold); }
+.dark-toggle svg { width: 15px; height: 15px; stroke: var(--muted); fill: none; stroke-width: 2; stroke-linecap: round; }
+.icon-sun { display: none; }
+.icon-moon { display: block; }
+[data-theme="light"] .icon-sun { display: block; }
+[data-theme="light"] .icon-moon { display: none; }
+
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; font-weight: 300; overflow-x: hidden; }
 
@@ -327,6 +371,11 @@ function driveImg(id) {
     <li><a href="#contact" class="nav-cta">Book a Shoot</a></li>
   </ul>
 </nav>
+
+<button class="dark-toggle" id="dark-toggle" onclick="toggleDark()" aria-label="Toggle light/dark mode">
+  <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
 
 <!-- ── HERO ── -->
 <section class="hero">
@@ -866,6 +915,19 @@ function submitEnquiry() {
   .then(() => { btn.textContent = 'Sent ✓'; btn.style.background = '#4a7c5c'; if(form) form.reset(); })
   .catch(() => { btn.textContent = 'Error — try again'; btn.style.background = '#8c3a3a'; btn.disabled = false; });
 }
+
+function toggleDark() {
+  const html = document.documentElement;
+  const isLight = html.getAttribute('data-theme') === 'light';
+  html.setAttribute('data-theme', isLight ? 'dark' : 'light');
+  try { localStorage.setItem('tts-theme', isLight ? 'dark' : 'light'); } catch(e) {}
+}
+(function() {
+  try {
+    const saved = localStorage.getItem('tts-theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  } catch(e) {}
+})();
 </script>
 </body>
 </html>
