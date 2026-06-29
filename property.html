@@ -152,7 +152,8 @@ nav a:hover { color: var(--gold); }
 .packages-section { background: var(--surface); padding: 6rem 3rem; }
 .packages-inner { max-width: 1100px; margin: 0 auto; }
 .packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-@media(min-width:900px){.packages-grid{grid-template-columns:repeat(5,1fr);}}
+@media(min-width:900px){.packages-grid{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:1200px){.packages-grid{grid-template-columns:repeat(6,1fr);}}
 .package-card { border: 1px solid var(--border); padding: 2.5rem 2rem; position: relative; transition: border-color 0.3s, transform 0.3s; background: var(--card); }
 .package-card:hover { border-color: var(--gold); transform: translateY(-4px); }
 .package-card.featured { border-color: var(--gold); background: var(--mid); }
@@ -429,6 +430,8 @@ function driveImg(id) {
   <div class="packages-inner">
     <p class="section-eyebrow reveal">Pricing</p>
     <h2 class="section-heading reveal">Simple, clear <em>packages</em></h2>
+    <p class="reveal" style="color:var(--muted);max-width:560px;line-height:1.7;margin-bottom:0.75rem;">All photography packages include HDR processing as standard — bright windows, dark corners, all balanced in one perfectly exposed image.</p>
+    <p class="reveal" style="font-size:0.78rem;color:var(--gold);letter-spacing:0.08em;margin-bottom:2.5rem;">✦ HDR included · 48-hr delivery · CAA registered drone operator</p>
     <div class="packages-grid reveal">
       <div class="package-card">
         <p class="package-name">Standard</p>
@@ -491,6 +494,18 @@ function driveImg(id) {
           <li>Save £75 vs booking individually</li>
         </ul>
         <button class="btn-package" onclick="openEnquiry('Full Service Package')">Enquire</button>
+      </div>
+      <div class="package-card" style="border-style:dashed;">
+        <p class="package-name">Custom</p>
+        <p class="package-price">Tailored to You · POA</p>
+        <ul class="package-features">
+          <li>Mix and match any services</li>
+          <li>Twilight &amp; dusk shoots</li>
+          <li>Multi-property runs</li>
+          <li>Rush turnaround available</li>
+          <li>Any combination, any scale</li>
+        </ul>
+        <button class="btn-package" onclick="openEnquiry('Custom Package')">Get a Quote</button>
       </div>
     </div>
     <p class="packages-note reveal">50% deposit required to confirm all bookings. West Yorkshire coverage at no extra charge. Outside W. Yorks — travel supplement agreed before booking. CAA registered drone operator.</p>
@@ -637,57 +652,84 @@ function driveImg(id) {
 
 
 <!-- HDR PHOTOGRAPHY SECTION -->
-<section id="hdr" style="padding:4rem 2rem;background:var(--navy);color:var(--cream);">
-  <div style="max-width:900px;margin:0 auto;">
+<section id="hdr" style="padding:5rem 2rem;background:var(--navy);color:var(--cream);">
+  <div style="max-width:960px;margin:0 auto;">
 
-    <p style="font-size:0.7rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem;">Why It Matters</p>
+    <p style="font-size:0.7rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem;">Included as Standard</p>
     <h2 style="font-family:'Cormorant',serif;font-size:2.4rem;font-weight:400;margin-bottom:1rem;line-height:1.2;">HDR Photography — Every Room at Its Best</h2>
-    <p style="color:var(--muted);max-width:600px;line-height:1.7;margin-bottom:3rem;">Standard cameras struggle with bright windows and dark corners at the same time. HDR (High Dynamic Range) photography solves this by blending multiple exposures into one perfectly balanced image — so every detail is visible, every room looks inviting.</p>
+    <p style="color:var(--muted);max-width:640px;line-height:1.8;margin-bottom:1rem;">When buyers browse listings online, first impressions form in seconds. A standard camera can't expose both a bright window and a dark interior at the same time — so you get blown-out views or gloomy rooms. HDR fixes this by blending several exposures into one perfectly balanced image: true-to-life colours, crisp shadows, and windows that actually show what's outside.</p>
+    <p style="color:var(--muted);max-width:640px;line-height:1.8;margin-bottom:3rem;">Every shoot includes HDR processing as standard. No upsell, no extra charge.</p>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-bottom:3rem;">
-
-      <div style="background:var(--navy-light,#12293d);border:1px solid var(--border,#2a3a4a);border-radius:6px;padding:1.5rem;">
-        <div style="font-size:2rem;font-weight:700;color:var(--gold);margin-bottom:0.4rem;">32%</div>
-        <div style="font-size:0.85rem;font-weight:600;color:var(--cream);margin-bottom:0.4rem;">Faster Sales</div>
-        <div style="font-size:0.8rem;color:var(--muted);line-height:1.5;">Homes with professional photography sell significantly faster than those without.</div>
+    <!-- Stats -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.5rem;margin-bottom:3.5rem;">
+      <div style="border-left:2px solid var(--gold);padding:1.2rem 1.5rem;">
+        <div style="font-size:2.4rem;font-weight:700;color:var(--gold);line-height:1;">32%</div>
+        <div style="font-size:0.82rem;font-weight:600;color:var(--cream);margin:0.4rem 0 0.3rem;">Faster Sales</div>
+        <div style="font-size:0.78rem;color:var(--muted);line-height:1.5;">Homes marketed with professional photography consistently sell faster than comparable listings without it.</div>
       </div>
-
-      <div style="background:var(--navy-light,#12293d);border:1px solid var(--border,#2a3a4a);border-radius:6px;padding:1.5rem;">
-        <div style="font-size:2rem;font-weight:700;color:var(--gold);margin-bottom:0.4rem;">118%</div>
-        <div style="font-size:0.85rem;font-weight:600;color:var(--cream);margin-bottom:0.4rem;">More Listing Views</div>
-        <div style="font-size:0.8rem;color:var(--muted);line-height:1.5;">HDR listings attract significantly more online views than standard photography.</div>
+      <div style="border-left:2px solid var(--gold);padding:1.2rem 1.5rem;">
+        <div style="font-size:2.4rem;font-weight:700;color:var(--gold);line-height:1;">118%</div>
+        <div style="font-size:0.82rem;font-weight:600;color:var(--cream);margin:0.4rem 0 0.3rem;">More Online Views</div>
+        <div style="font-size:0.78rem;color:var(--muted);line-height:1.5;">HDR listings attract over twice the online views compared to those shot with standard photography.</div>
       </div>
-
-      <div style="background:var(--navy-light,#12293d);border:1px solid var(--border,#2a3a4a);border-radius:6px;padding:1.5rem;">
-        <div style="font-size:2rem;font-weight:700;color:var(--gold);margin-bottom:0.4rem;">48hr</div>
-        <div style="font-size:0.85rem;font-weight:600;color:var(--cream);margin-bottom:0.4rem;">Turnaround</div>
-        <div style="font-size:0.8rem;color:var(--muted);line-height:1.5;">All HDR-edited images delivered within 48 hours, ready to go live immediately.</div>
+      <div style="border-left:2px solid var(--gold);padding:1.2rem 1.5rem;">
+        <div style="font-size:2.4rem;font-weight:700;color:var(--gold);line-height:1;">£11k</div>
+        <div style="font-size:0.82rem;font-weight:600;color:var(--cream);margin:0.4rem 0 0.3rem;">Higher Sale Prices</div>
+        <div style="font-size:0.78rem;color:var(--muted);line-height:1.5;">Properties with high-quality images achieve meaningfully higher final sale prices — sometimes thousands more.</div>
       </div>
-
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
-      <div>
-        <h3 style="font-size:1rem;font-weight:600;color:var(--cream);margin-bottom:1rem;">Without HDR</h3>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.6rem;">
-          <li style="font-size:0.85rem;color:var(--muted);">✗ &nbsp;Blown-out windows — outdoor views disappear</li>
-          <li style="font-size:0.85rem;color:var(--muted);">✗ &nbsp;Dark shadows — rooms feel small and uninviting</li>
-          <li style="font-size:0.85rem;color:var(--muted);">✗ &nbsp;Uneven lighting — looks flat and unprofessional</li>
-          <li style="font-size:0.85rem;color:var(--muted);">✗ &nbsp;Buyers scroll past</li>
-        </ul>
-      </div>
-      <div>
-        <h3 style="font-size:1rem;font-weight:600;color:var(--gold);margin-bottom:1rem;">With HDR</h3>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.6rem;">
-          <li style="font-size:0.85rem;color:var(--cream);">✓ &nbsp;Perfect window detail — views preserved</li>
-          <li style="font-size:0.85rem;color:var(--cream);">✓ &nbsp;Bright, balanced rooms — spaces feel larger</li>
-          <li style="font-size:0.85rem;color:var(--cream);">✓ &nbsp;True-to-life colours — warm and inviting</li>
-          <li style="font-size:0.85rem;color:var(--cream);">✓ &nbsp;High-end feel — even mid-range properties</li>
-        </ul>
+      <div style="border-left:2px solid var(--gold);padding:1.2rem 1.5rem;">
+        <div style="font-size:2.4rem;font-weight:700;color:var(--gold);line-height:1;">48hr</div>
+        <div style="font-size:0.82rem;font-weight:600;color:var(--cream);margin:0.4rem 0 0.3rem;">Delivery</div>
+        <div style="font-size:0.78rem;color:var(--muted);line-height:1.5;">All HDR-edited images back with you within 48 hours, ready to go live the same day.</div>
       </div>
     </div>
 
-    <p style="margin-top:2.5rem;font-size:0.82rem;color:var(--muted);">HDR processing is included as standard in all TinyTangent Studios property photography packages.</p>
+    <!-- Benefits grid -->
+    <h3 style="font-family:'Cormorant',serif;font-size:1.5rem;font-weight:400;color:var(--cream);margin-bottom:1.5rem;">What HDR delivers</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:3rem;">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border,#2a3a4a);padding:1.4rem;">
+        <div style="font-size:0.8rem;font-weight:600;color:var(--gold);margin-bottom:0.5rem;letter-spacing:0.05em;">TRUE-TO-LIFE COLOURS</div>
+        <p style="font-size:0.8rem;color:var(--muted);line-height:1.6;margin:0;">Standard photos wash colours out or darken them. HDR preserves the warmth of wood floors, the tone of painted walls, and the depth of stone finishes — exactly as they look in person.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border,#2a3a4a);padding:1.4rem;">
+        <div style="font-size:0.8rem;font-weight:600;color:var(--gold);margin-bottom:0.5rem;letter-spacing:0.05em;">ROOMS FEEL LARGER</div>
+        <p style="font-size:0.8rem;color:var(--muted);line-height:1.6;margin:0;">Poor lighting makes spaces look cramped. Even a compact room looks open and welcoming when the exposure is balanced correctly — a direct result of the HDR blending process.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border,#2a3a4a);padding:1.4rem;">
+        <div style="font-size:0.8rem;font-weight:600;color:var(--gold);margin-bottom:0.5rem;letter-spacing:0.05em;">WINDOWS THAT SHOW VIEWS</div>
+        <p style="font-size:0.8rem;color:var(--muted);line-height:1.6;margin:0;">One of the most common complaints about listing photos: blown-out windows where the garden or street view disappears. HDR preserves both the interior and the view beyond the glass simultaneously.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border,#2a3a4a);padding:1.4rem;">
+        <div style="font-size:0.8rem;font-weight:600;color:var(--gold);margin-bottom:0.5rem;letter-spacing:0.05em;">HIGH-END AT ANY PRICE POINT</div>
+        <p style="font-size:0.8rem;color:var(--muted);line-height:1.6;margin:0;">Buyers associate image quality with property quality. A well-executed HDR image makes a mid-range listing feel premium — which means more enquiries, more viewings, and stronger offers for your vendors.</p>
+      </div>
+    </div>
+
+    <!-- Without / With comparison -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding-top:2rem;border-top:1px solid var(--border,#2a3a4a);">
+      <div>
+        <h4 style="font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">Without HDR</h4>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.7rem;">
+          <li style="font-size:0.82rem;color:var(--muted);">✗ &nbsp;Blown-out windows — outdoor views vanish</li>
+          <li style="font-size:0.82rem;color:var(--muted);">✗ &nbsp;Flat shadows — rooms feel dark and cramped</li>
+          <li style="font-size:0.82rem;color:var(--muted);">✗ &nbsp;Washed-out or dull colours</li>
+          <li style="font-size:0.82rem;color:var(--muted);">✗ &nbsp;Uneven lighting looks unprofessional</li>
+          <li style="font-size:0.82rem;color:var(--muted);">✗ &nbsp;Buyers scroll past</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">With HDR</h4>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.7rem;">
+          <li style="font-size:0.82rem;color:var(--cream);">✓ &nbsp;Windows balanced — views fully preserved</li>
+          <li style="font-size:0.82rem;color:var(--cream);">✓ &nbsp;Bright, open feel — spaces look larger</li>
+          <li style="font-size:0.82rem;color:var(--cream);">✓ &nbsp;Accurate, warm, true-to-life colours</li>
+          <li style="font-size:0.82rem;color:var(--cream);">✓ &nbsp;Clean, high-end finish on every shot</li>
+          <li style="font-size:0.82rem;color:var(--cream);">✓ &nbsp;More clicks, more viewings, stronger offers</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="margin-top:2.5rem;padding:1rem 1.5rem;border:1px solid var(--gold);font-size:0.82rem;color:var(--cream);line-height:1.7;display:inline-block;">HDR processing is included as standard in every TinyTangent Studios photography package — Standard, Premium, and Full Service. No extras, no surprises.</p>
 
   </div>
 </section>
@@ -714,7 +756,7 @@ function driveImg(id) {
     <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:400;color:var(--white);margin-bottom:1.5rem;">Quick Enquiry</h3>
     <div class="form-field" style="margin-bottom:1rem;"><label>Name</label><input type="text" placeholder="Your name"/></div>
     <div class="form-field" style="margin-bottom:1rem;"><label>Email</label><input type="email" placeholder="your@email.com"/></div>
-    <div class="form-field" style="margin-bottom:1.5rem;"><label>Message</label><textarea placeholder="Any details about the property or shoot…" style="min-height:70px;"></textarea></div>
+    <div class="form-field" style="margin-bottom:1.5rem;"><label>Message</label><textarea id="modal-message" placeholder="Tell me about the property, what you need, and any specific requirements…" style="min-height:80px;"></textarea></div>
     <button onclick="submitEnquiry()" style="width:100%;padding:0.85rem;background:var(--gold);color:var(--dark);border:none;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;font-family:'Outfit',sans-serif;">Send</button>
   </div>
 </div>
