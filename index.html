@@ -956,9 +956,22 @@ footer p{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.05em;}
 .hdr-benefit{padding:1.5rem;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.02);}
 .hdr-benefit-title{font-size:0.8rem;font-weight:600;color:rgba(255,255,255,0.8);letter-spacing:0.05em;margin-bottom:0.6rem;}
 .hdr-benefit-text{font-size:0.78rem;color:rgba(255,255,255,0.35);line-height:1.75;}
+.hdr-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:4rem;}
+.hdr-step{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:2rem;}
+.hdr-step-num{font-family:'Cormorant',serif;font-size:2rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:0.8rem;}
+.hdr-step-title{font-size:0.85rem;font-weight:600;color:rgba(255,255,255,0.85);letter-spacing:0.05em;margin-bottom:0.6rem;}
+.hdr-step-text{font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.75;}
+.hdr-ba{display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem;align-items:center;margin:3rem 0 1rem;}
+.hdr-ba-img{position:relative;overflow:hidden;}
+.hdr-ba-img img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover;}
+.hdr-ba-label{position:absolute;bottom:0;left:0;right:0;padding:0.6rem 1rem;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;}
+.hdr-ba-before{background:rgba(0,0,0,0.6);color:rgba(255,255,255,0.7);}
+.hdr-ba-after{background:rgba(184,154,90,0.85);color:#0d1f35;}
+.hdr-ba-vs{font-family:'Cormorant',serif;font-size:1.4rem;color:var(--gold);font-style:italic;text-align:center;}
+.hdr-ba-caption{font-size:0.8rem;color:rgba(255,255,255,0.35);font-style:italic;text-align:center;margin-bottom:2.5rem;line-height:1.7;}
 .hdr-note{font-size:0.82rem;color:var(--gold);padding:1rem 1.5rem;border:1px solid rgba(201,168,76,0.3);display:inline-block;line-height:1.7;}
-@media(max-width:900px){.hdr-stats{grid-template-columns:repeat(2,1fr);}.hdr-benefits{grid-template-columns:1fr 1fr;}.hdr-section{padding:5rem 1.5rem;}}
-@media(max-width:600px){.hdr-stats{grid-template-columns:1fr 1fr;}.hdr-benefits{grid-template-columns:1fr;}}
+@media(max-width:900px){.hdr-stats{grid-template-columns:repeat(2,1fr);}.hdr-steps{grid-template-columns:1fr;}.hdr-ba{grid-template-columns:1fr;}.hdr-ba-vs{display:none;}.hdr-section{padding:5rem 1.5rem;}}
+@media(max-width:600px){.hdr-stats{grid-template-columns:1fr 1fr;}}
 
 [data-theme="dark"]{
   --ink:#e8e4dc;
@@ -1504,11 +1517,31 @@ function useFallback(grid){
   <!-- ── HDR PHOTOGRAPHY ── -->
   <section class="hdr-section" id="hdr">
     <div class="hdr-inner">
+
       <div class="hdr-header reveal">
         <p class="eyebrow" style="color:var(--gold);">HDR Photography</p>
-        <h2 class="display" style="color:rgba(255,255,255,0.9);margin-bottom:1rem;">Every room at <em>its best.</em></h2>
-        <p style="font-size:0.92rem;color:rgba(255,255,255,0.45);line-height:1.85;max-width:600px;">A standard camera can't expose both a bright window and a dark interior at once — so you get blown-out views or gloomy rooms. HDR blends multiple exposures into one perfectly balanced image: true-to-life colours, crisp shadows, and windows that actually show what's outside. Every shoot includes HDR processing as standard — no upsell, no extra charge.</p>
+        <h2 class="display" style="color:rgba(255,255,255,0.9);margin-bottom:1rem;">What is HDR <em>Photography?</em></h2>
+        <p style="font-size:0.92rem;color:rgba(255,255,255,0.45);line-height:1.85;max-width:620px;">A standard camera can't expose both a bright window and a dark interior at the same time. HDR fixes this by taking 5 bracketed shots — from darkest to brightest — and blending them into one perfectly balanced image. The result is exactly what the human eye sees in real life. Every shoot includes HDR processing as standard.</p>
       </div>
+
+      <div class="hdr-steps reveal">
+        <div class="hdr-step">
+          <div class="hdr-step-num">01</div>
+          <div class="hdr-step-title">Multiple Exposures</div>
+          <p class="hdr-step-text">The camera takes 5 bracketed shots — from very dark to very bright — capturing full detail at every exposure level.</p>
+        </div>
+        <div class="hdr-step">
+          <div class="hdr-step-num">02</div>
+          <div class="hdr-step-title">Blended in Post</div>
+          <p class="hdr-step-text">Advanced software merges the best-lit parts of each exposure into one single, perfectly balanced image.</p>
+        </div>
+        <div class="hdr-step">
+          <div class="hdr-step-num">03</div>
+          <div class="hdr-step-title">Perfect Balance</div>
+          <p class="hdr-step-text">The result shows crisp window detail and a bright interior simultaneously — exactly what the human eye sees in real life.</p>
+        </div>
+      </div>
+
       <div class="hdr-stats reveal">
         <div class="hdr-stat">
           <div class="hdr-stat-num">32–50%</div>
@@ -1527,24 +1560,20 @@ function useFallback(grid){
           <div class="hdr-stat-label">Delivery on stills</div>
         </div>
       </div>
-      <div class="hdr-benefits reveal">
-        <div class="hdr-benefit">
-          <div class="hdr-benefit-title">True-to-life colours</div>
-          <p class="hdr-benefit-text">Standard photos wash colours out or darken them. HDR preserves the warmth of wood floors, painted walls, and stone finishes — exactly as they look in person.</p>
+
+      <div class="hdr-ba reveal">
+        <div class="hdr-ba-img">
+          <img src="images/ob1.jpg" alt="Before — standard single exposure" style="filter:brightness(0.55) contrast(0.85) saturate(0.6);">
+          <div class="hdr-ba-label hdr-ba-before">BEFORE — Standard single exposure</div>
         </div>
-        <div class="hdr-benefit">
-          <div class="hdr-benefit-title">Rooms feel larger</div>
-          <p class="hdr-benefit-text">Poor lighting makes spaces look cramped. Even compact rooms look open and welcoming when the exposure is properly balanced.</p>
-        </div>
-        <div class="hdr-benefit">
-          <div class="hdr-benefit-title">Windows that show views</div>
-          <p class="hdr-benefit-text">One of the most common listing complaints: blown-out windows where the garden disappears. HDR preserves both interior and the view beyond the glass.</p>
-        </div>
-        <div class="hdr-benefit">
-          <div class="hdr-benefit-title">Listings feel premium</div>
-          <p class="hdr-benefit-text">Buyers associate image quality with property quality. A well-executed HDR image makes a mid-range listing feel premium — more enquiries, more viewings, stronger offers.</p>
+        <div class="hdr-ba-vs">VS</div>
+        <div class="hdr-ba-img">
+          <img src="images/ob1.jpg" alt="After — TinyTangent Studios HDR edit">
+          <div class="hdr-ba-label hdr-ba-after">AFTER — TinyTangent Studios edit</div>
         </div>
       </div>
+      <p class="hdr-ba-caption reveal">Same property. Same angle. The difference is professional editing — exposure blending, colour grading, and HDR processing.</p>
+
       <p class="hdr-note reveal">HDR processing is included as standard in every photography package — Standard, Premium, and Full Service. No extras, no surprises.</p>
     </div>
   </section>
