@@ -945,6 +945,21 @@ footer p{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.05em;}
 }
 
 /* ── DARK MODE ── */
+/* ── HDR SECTION ── */
+.hdr-section{background:var(--navy);padding:8rem 3rem;}
+.hdr-inner{max-width:1200px;margin:0 auto;}
+.hdr-header{margin-bottom:4rem;}
+.hdr-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-bottom:4rem;padding:2.5rem 0;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);}
+.hdr-stat-num{font-family:'Cormorant',serif;font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:0.4rem;}
+.hdr-stat-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);}
+.hdr-benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-bottom:3rem;}
+.hdr-benefit{padding:1.5rem;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.02);}
+.hdr-benefit-title{font-size:0.8rem;font-weight:600;color:rgba(255,255,255,0.8);letter-spacing:0.05em;margin-bottom:0.6rem;}
+.hdr-benefit-text{font-size:0.78rem;color:rgba(255,255,255,0.35);line-height:1.75;}
+.hdr-note{font-size:0.82rem;color:var(--gold);padding:1rem 1.5rem;border:1px solid rgba(201,168,76,0.3);display:inline-block;line-height:1.7;}
+@media(max-width:900px){.hdr-stats{grid-template-columns:repeat(2,1fr);}.hdr-benefits{grid-template-columns:1fr 1fr;}.hdr-section{padding:5rem 1.5rem;}}
+@media(max-width:600px){.hdr-stats{grid-template-columns:1fr 1fr;}.hdr-benefits{grid-template-columns:1fr;}}
+
 [data-theme="dark"]{
   --ink:#e8e4dc;
   --paper:#0e0e0e;
@@ -1483,6 +1498,54 @@ function useFallback(grid){
         <div><h3>Like what you see?</h3><p>Book a complimentary first shoot on one of your current listings — no commitment required.</p></div>
         <button class="btn-primary" onclick="scrollToSection('prop-contact')" style="background:var(--gold);color:var(--white);">Book a Free Shoot</button>
       </div>
+    </div>
+  </section>
+
+  <!-- ── HDR PHOTOGRAPHY ── -->
+  <section class="hdr-section" id="hdr">
+    <div class="hdr-inner">
+      <div class="hdr-header reveal">
+        <p class="eyebrow" style="color:var(--gold);">HDR Photography</p>
+        <h2 class="display" style="color:rgba(255,255,255,0.9);margin-bottom:1rem;">Every room at <em>its best.</em></h2>
+        <p style="font-size:0.92rem;color:rgba(255,255,255,0.45);line-height:1.85;max-width:600px;">A standard camera can't expose both a bright window and a dark interior at once — so you get blown-out views or gloomy rooms. HDR blends multiple exposures into one perfectly balanced image: true-to-life colours, crisp shadows, and windows that actually show what's outside. Every shoot includes HDR processing as standard — no upsell, no extra charge.</p>
+      </div>
+      <div class="hdr-stats reveal">
+        <div class="hdr-stat">
+          <div class="hdr-stat-num">32–50%</div>
+          <div class="hdr-stat-label">Faster sales</div>
+        </div>
+        <div class="hdr-stat">
+          <div class="hdr-stat-num">118%</div>
+          <div class="hdr-stat-label">More online views</div>
+        </div>
+        <div class="hdr-stat">
+          <div class="hdr-stat-num">21</div>
+          <div class="hdr-stat-label">Fewer days on market</div>
+        </div>
+        <div class="hdr-stat">
+          <div class="hdr-stat-num">48hr</div>
+          <div class="hdr-stat-label">Delivery on stills</div>
+        </div>
+      </div>
+      <div class="hdr-benefits reveal">
+        <div class="hdr-benefit">
+          <div class="hdr-benefit-title">True-to-life colours</div>
+          <p class="hdr-benefit-text">Standard photos wash colours out or darken them. HDR preserves the warmth of wood floors, painted walls, and stone finishes — exactly as they look in person.</p>
+        </div>
+        <div class="hdr-benefit">
+          <div class="hdr-benefit-title">Rooms feel larger</div>
+          <p class="hdr-benefit-text">Poor lighting makes spaces look cramped. Even compact rooms look open and welcoming when the exposure is properly balanced.</p>
+        </div>
+        <div class="hdr-benefit">
+          <div class="hdr-benefit-title">Windows that show views</div>
+          <p class="hdr-benefit-text">One of the most common listing complaints: blown-out windows where the garden disappears. HDR preserves both interior and the view beyond the glass.</p>
+        </div>
+        <div class="hdr-benefit">
+          <div class="hdr-benefit-title">Listings feel premium</div>
+          <p class="hdr-benefit-text">Buyers associate image quality with property quality. A well-executed HDR image makes a mid-range listing feel premium — more enquiries, more viewings, stronger offers.</p>
+        </div>
+      </div>
+      <p class="hdr-note reveal">HDR processing is included as standard in every photography package — Standard, Premium, and Full Service. No extras, no surprises.</p>
     </div>
   </section>
 
